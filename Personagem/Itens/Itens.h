@@ -25,10 +25,14 @@ public:
     void setPocaoDeCuraForte(int pocaoDeCuraForte);
     void setPocaoDeMana(int pocaoDeMana);
     void setPocaoDeManaForte(int pocaoDeManaForte);
+    void setArma(const std::string &arma);
+    void serArmadura(const std::string &armadura);
 
     // getter
     int getPocaoDeCura();
     int getPocaoDeCuraForte();
     int getPocaoDeMana();
     int getPocaoDeManaForte();
+    const std::string getArma();
+    const std::string getArmadura();
 };

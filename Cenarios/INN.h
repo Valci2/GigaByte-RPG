@@ -1,4 +1,6 @@
+#pragma once
+#include "../Personagem/Personagem.h"
 
+int dentroDoINN(Personagem &jogador);
 
-class INN {
-};
+void Dormir();

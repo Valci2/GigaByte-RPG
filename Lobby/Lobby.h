@@ -1,4 +1,4 @@
 #pragma once
 #include "../Personagem/Personagem.h"
 
-void lobby(Personagem jogador);
+void lobby(Personagem &jogador);

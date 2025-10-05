@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 
+#include "Itens/Itens.h"
+
 class Personagem {
     private:
         std::string nome;
@@ -13,6 +15,7 @@ class Personagem {
         int inteligencia = 1;
         int defesa = 0;
         int ouro = 0;
+        Itens itens;
 
     public:
         // construtor
@@ -20,6 +23,7 @@ class Personagem {
 
         // metodos
         void status();
+        void inventario();
 
         // Getter e Setter
         std::string getNome();

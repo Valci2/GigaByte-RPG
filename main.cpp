@@ -8,7 +8,7 @@
  *Personagem/Personagem.cpp
 Historia/Historia.cpp
 Lobby/Lobby.cpp
-Historia/funcoesUteis.cpp
+funcoesUteis/funcoesUteis.cpp
 */
 
 int main() {

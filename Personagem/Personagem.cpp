@@ -16,6 +16,14 @@ void Personagem::status() {
     std::cout << "Defesa: " << defesa << std::endl;
 }
 
+void Personagem::inventario() {
+    std::cout << "Pocao de Cura: " << itens.getPocaoDeCura() << std::endl;
+    std::cout << "Pocao de Cura Forte: " << itens.getPocaoDeCuraForte() << std::endl;
+    std::cout << "Pocao de Mana: " << itens.getPocaoDeMana() << std::endl;
+    std::cout << "Pocao de Mana Forte: " << itens.getPocaoDeManaForte() << std::endl;
+    std::cout << "Arma: " << itens.getArma() << std::endl;
+    std::cout << "Armadura: " << itens.getArmadura() << std::endl;
+}
 
 std::string Personagem::getNome() {
     return nome;

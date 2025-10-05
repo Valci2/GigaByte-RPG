@@ -10,10 +10,10 @@ Personagem apresentacao() {
     linha();
     std::cout << "Bem como eu estou sendo desenvolvido para um projeto que precisa usar POO, entao" << std::endl;
     std::cout << "preciso criar um objeto da classe Personagem. Para isso, preciso que voce forneca seu nome." << std::endl;
-    std::cout << "(sim, forneca. infelizmente fui programado em c++ e não consigo computar acentos)." << std::endl;
+    std::cout << "(sim, forneca. infelizmente fui programado em c++ e nao consigo computar acentos)." << std::endl;
 
     delay(5);
-    std::cout << "entao coloca ai, se nao o programa não roda. ;-;" << std::endl;
+    std::cout << "entao coloca ai, se nao o programa nao roda. ;-;" << std::endl;
 
     linha();
     std::cout << "Digite seu nome: ";

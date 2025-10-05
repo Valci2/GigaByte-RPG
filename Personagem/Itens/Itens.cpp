@@ -1,16 +1,16 @@
 #include "Itens.h"
-#include "../Personagem.h"
 
+// construtor
 Itens::Itens() {}
 
-void Itens::usarPocaoDeCura(Personagem jogador) {}
-
+// metodos
+void Itens::usarPocaoDeCura() {}
 void Itens::usarPocaoDeCuraForte() {}
-
 void Itens::usarPocaoDeMana() {}
-
 void Itens::usarPocaoDeManaForte() {}
 
+
+// getter
 int Itens::getPocaoDeCura() {
     return pocaoDeCura;
 }
@@ -27,6 +27,16 @@ int Itens::getPocaoDeManaForte() {
     return pocaoDeManaForte;
 }
 
+const std::string Itens::getArma() {
+    return arma;
+}
+
+const std::string Itens::getArmadura() {
+    return armadura;
+}
+
+
+// setter
 void Itens::setPocaoDeCura(int pocaoDeCura) {
     this->pocaoDeCura = pocaoDeCura;
 }
@@ -43,3 +53,10 @@ void Itens::setPocaoDeManaForte(int pocaoDeManaForte) {
     this->pocaoDeManaForte = pocaoDeManaForte;
 }
 
+void Itens::setArma(const std::string &arma) {
+    this->arma = arma;
+}
+
+void Itens::serArmadura(const std::string &armadura) {
+    this->armadura = armadura;
+}

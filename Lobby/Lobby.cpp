@@ -1,10 +1,9 @@
 #include "Lobby.h"
 #include <iostream>
-#include <thread> // Fornece acesso à biblioteca de multithreading da C++ Standard Library, usada para criar e gerenciar threads.
-#include <chrono> // Traz ferramentas de tempo, como duração, relógios, contagem de tempo etc.
-#include <limits> // Fornece limites numéricos para os tipos primitivos (como int, float, etc.).
+#include "../Cenarios/INN.h"
+#include "../funcoesUteis/funcoesUteis.h"
 
-void lobby(Personagem jogador) {
+void lobby(Personagem &jogador) {
     while (true) {
         std::cout << "============= Lobby =============" << std::endl;
         std::cout << "[1] Fases" << std::endl;
@@ -14,19 +13,27 @@ void lobby(Personagem jogador) {
         std::cout << "[5] Inventario" << std::endl;
 
         int escolha = 0;
-        std::cout << "O que você quer fazer: ";
+        int a = 0;
+        std::cout << "O que voce quer fazer: ";
         std::cin >> escolha;
+        delay(3);
+        linha();
         switch (escolha) {
+            case 3:
+                a = dentroDoINN(jogador); // tem que resumir isso
+                break;
             case 4:
                 jogador.status();
+                break;
+            case 5:
+                jogador.inventario();
                 break;
             default:
                 std::cout << "Ta dando uma de chapezinho? respeita os caminhos!" << std::endl;
         }
         if (std::cin.fail()) {
-            std::cout << "Não tenho esse caminho na memoria. Como eu vou ir?" << std::endl;
-            std::cin.clear(); // limpa o erro
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // descarta a entrada inválida
+            std::cout << "Nao tenho esse caminho na memoria. Como eu vou ir?" << std::endl;
+            limparEntrada();
         }
     }
 }
