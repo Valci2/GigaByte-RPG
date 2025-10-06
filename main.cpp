@@ -5,10 +5,12 @@
 
 // colar isso no clion para rodar o programa
 /*
- *Personagem/Personagem.cpp
+Personagem/Personagem.cpp
 Historia/Historia.cpp
 Lobby/Lobby.cpp
 funcoesUteis/funcoesUteis.cpp
+Personagem/Itens/Itens.cpp
+Cenarios/INN.cpp
 */
 
 int main() {
