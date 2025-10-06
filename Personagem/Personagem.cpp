@@ -7,9 +7,10 @@ Personagem::Personagem(const std::string &nome) : nome(nome) {
 
 // metodo
 void Personagem::status() {
+    std::cout << "============= status =============" << std::endl;
     std::cout << "Nome: " << nome << std::endl;
-    std::cout << "HP: " << HP << "/" << maxHP<< std::endl;
-    std::cout << "Mana: " << mana << "/" << maxMana << std::endl;
+    std::cout << "HP: " << maxHP << "/" << HP << std::endl;
+    std::cout << "Mana: " << maxMana << "/" << mana << std::endl;
     std::cout << "Nivel: " << nivel << std::endl;
     std::cout << "Forca: " << forca << std::endl;
     std::cout << "Inteligencia: " << inteligencia << std::endl;
@@ -17,6 +18,8 @@ void Personagem::status() {
 }
 
 void Personagem::inventario() {
+    std::cout << "============= inventario =============" << std::endl;
+    std::cout << "ouro: " << itens.getOuro() << std::endl;
     std::cout << "Pocao de Cura: " << itens.getPocaoDeCura() << std::endl;
     std::cout << "Pocao de Cura Forte: " << itens.getPocaoDeCuraForte() << std::endl;
     std::cout << "Pocao de Mana: " << itens.getPocaoDeMana() << std::endl;
@@ -25,7 +28,8 @@ void Personagem::inventario() {
     std::cout << "Armadura: " << itens.getArmadura() << std::endl;
 }
 
-std::string Personagem::getNome() {
+// getter
+const std::string &Personagem::getNome() {
     return nome;
 }
 
@@ -63,10 +67,8 @@ int Personagem::getDefesa() {
     return defesa;
 }
 
-int Personagem::getOuro() {
-    return ouro;
-}
 
+// setter
 void Personagem::setNome(const std::string &nome) {
     this->nome = nome;
 }
@@ -101,8 +103,4 @@ void Personagem::setInteligencia(int inteligencia) {
 
 void Personagem::setDefesa(int defesa) {
     this->defesa = defesa;
-}
-
-void Personagem::setOuro(int ouro) {
-    this->ouro = ouro;
 }

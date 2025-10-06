@@ -9,8 +9,11 @@ void Itens::usarPocaoDeCuraForte() {}
 void Itens::usarPocaoDeMana() {}
 void Itens::usarPocaoDeManaForte() {}
 
-
 // getter
+int Itens::getOuro() {
+    return ouro;
+}
+
 int Itens::getPocaoDeCura() {
     return pocaoDeCura;
 }
@@ -27,16 +30,19 @@ int Itens::getPocaoDeManaForte() {
     return pocaoDeManaForte;
 }
 
-const std::string Itens::getArma() {
+const std::string &Itens::getArma() {
     return arma;
 }
 
-const std::string Itens::getArmadura() {
+const std::string &Itens::getArmadura() {
     return armadura;
 }
 
-
 // setter
+void Itens::setOuro(int ouro) {
+    this->ouro = ouro;
+}
+
 void Itens::setPocaoDeCura(int pocaoDeCura) {
     this->pocaoDeCura = pocaoDeCura;
 }

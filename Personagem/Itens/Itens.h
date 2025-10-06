@@ -3,6 +3,7 @@
 
 class Itens {
 private:
+    int ouro = 0;
     int pocaoDeCura = 0;
     int pocaoDeCuraForte = 0;
     int pocaoDeMana = 0;
@@ -21,6 +22,7 @@ public:
     void usarPocaoDeManaForte();
 
     // setter
+    void setOuro(int ouro);
     void setPocaoDeCura(int pocaoDeCura);
     void setPocaoDeCuraForte(int pocaoDeCuraForte);
     void setPocaoDeMana(int pocaoDeMana);
@@ -29,10 +31,11 @@ public:
     void serArmadura(const std::string &armadura);
 
     // getter
+    int getOuro();
     int getPocaoDeCura();
     int getPocaoDeCuraForte();
     int getPocaoDeMana();
     int getPocaoDeManaForte();
-    const std::string getArma();
-    const std::string getArmadura();
+    const std::string &getArma();
+    const std::string &getArmadura();
 };

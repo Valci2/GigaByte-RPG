@@ -1,7 +1,7 @@
 #include "Lobby.h"
-#include <iostream>
 #include "../Cenarios/INN.h"
 #include "../funcoesUteis/funcoesUteis.h"
+#include <iostream>
 
 void lobby(Personagem &jogador) {
     while (true) {
@@ -13,26 +13,31 @@ void lobby(Personagem &jogador) {
         std::cout << "[5] Inventario" << std::endl;
 
         int escolha = 0;
-        int a = 0;
         std::cout << "O que voce quer fazer: ";
         std::cin >> escolha;
-        linha();
-        switch (escolha) {
-            case 3:
-                a = dentroDoINN(jogador); // tem que resumir isso
-                break;
-            case 4:
-                jogador.status();
-                break;
-            case 5:
-                jogador.inventario();
-                break;
-            default:
-                std::cout << "Ta dando uma de chapezinho? respeita os caminhos!" << std::endl;
-        }
         if (std::cin.fail()) {
-            std::cout << "Nao tenho esse caminho na memoria. Como eu vou ir?" << std::endl;
             limparEntrada();
+            std::cout << "ta tendo me testar ou eh para fritar minha paciencia?" << std::endl;
+            std::cout << "tambem vai aguardar 10 segundo agora" << std::endl;
+            delay(10);
+        } else {
+            switch (escolha) {
+                case 3:
+                    std::cout << "indo ate o local" << std::endl;
+                    delay(2);
+                    dentroDoINN(jogador); // leva o jogador para dentro do INN
+                    break;
+                case 4:
+                    jogador.status(); // mostra os status do jogador
+                    delay(3);
+                    break;
+                case 5:
+                    jogador.inventario(); // mostra o inventario do jogador
+                    delay(3);
+                    break;
+                default: // caso não seja nenhum das opções acima
+                    std::cout << "Ta dando uma de chapezinho? respeita os caminhos!" << std::endl;
+            }
         }
     }
 }

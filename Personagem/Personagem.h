@@ -14,7 +14,6 @@ class Personagem {
         int forca = 1;
         int inteligencia = 1;
         int defesa = 0;
-        int ouro = 0;
         Itens itens;
 
     public:
@@ -25,25 +24,25 @@ class Personagem {
         void status();
         void inventario();
 
-        // Getter e Setter
-        std::string getNome();
-        void setNome(const std::string &nome);
+        // Getter
+        const std::string &getNome();
         int getHP();
-        void setHP(int hp);
         int getMaxHP();
-        void setMaxHP(int maxHP);
         int getMaxMana();
-        void setMaxMana(int mana);
         int getMana();
-        void setMana(int mana);
         int getNivel();
-        void setNivel(int nivel);
         int getForca();
-        void setForca(int forca);
         int getInteligencia();
-        void setInteligencia(int inteligencia);
         int getDefesa();
+
+        // Setter
+        void setNome(const std::string &nome);
+        void setHP(int hp);
+        void setMaxHP(int maxHP);
+        void setMana(int mana);
+        void setMaxMana(int mana);
+        void setNivel(int nivel);
+        void setForca(int forca);
+        void setInteligencia(int inteligencia);
         void setDefesa(int defesa);
-        int getOuro();
-        void setOuro(int ouro);
 };

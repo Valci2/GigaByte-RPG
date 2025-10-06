@@ -56,9 +56,9 @@ void historia01() {
 
     linha();
     std::cout << "Vou te apresentar o Lobby eh nele que voce pode fazer upgrades, descansar, escolher as fases, ver os status, Etc." << std::endl;
-    std::cout << "[1] Fases: voce pode acessar as 3 fases principais do jogo aqui dentro" << std::endl;
+    std::cout << "[1] Fases: voce pode acessar as 3 fases principais do jogo aqui dentro." << std::endl;
     std::cout << "[2] Loja: voce pode comprar suas armas, pocoes, aqui." << std::endl;
-    std::cout << "[3] INN: voce pode descansar nesse pousada, assim voce recupera HP (vida) e MP (mana)" << std::endl;
+    std::cout << "[3] INN: voce pode descansar nesse pousada, assim voce recupera HP (vida) e MP (mana)." << std::endl;
     std::cout << "[4] Status: voce ve os status do personagem, HP, mana, forca, defesa, etc." << std::endl;
     std::cout << "[5] Inventario: voce ve os itens que você possui e os seus equipamentos." << std::endl;
     delay(10);
