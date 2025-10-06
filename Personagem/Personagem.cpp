@@ -8,8 +8,8 @@ Personagem::Personagem(const std::string &nome) : nome(nome) {
 // metodo
 void Personagem::status() {
     std::cout << "Nome: " << nome << std::endl;
-    std::cout << "HP: " << HP << std::endl;
-    std::cout << "Mana: " << mana << std::endl;
+    std::cout << "HP: " << HP << "/" << maxHP<< std::endl;
+    std::cout << "Mana: " << mana << "/" << maxMana << std::endl;
     std::cout << "Nivel: " << nivel << std::endl;
     std::cout << "Forca: " << forca << std::endl;
     std::cout << "Inteligencia: " << inteligencia << std::endl;

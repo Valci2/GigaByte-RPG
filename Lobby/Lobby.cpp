@@ -16,7 +16,6 @@ void lobby(Personagem &jogador) {
         int a = 0;
         std::cout << "O que voce quer fazer: ";
         std::cin >> escolha;
-        delay(3);
         linha();
         switch (escolha) {
             case 3:
