@@ -13,6 +13,7 @@ Personagem/Itens/Itens.cpp
 Personagem/Personagem.cpp
 Cenarios/INN/INN.cpp
 Cenarios/Loja/Loja.cpp
+Cenarios/Loja/trocaDosItens.cpp
 */
 
 int main() {

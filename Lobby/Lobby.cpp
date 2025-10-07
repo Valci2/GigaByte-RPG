@@ -19,7 +19,7 @@ void lobby(Personagem &jogador) {
         if (std::cin.fail()) {
             limparEntrada();
             std::cout << "ta tendo me testar ou eh para fritar minha paciencia?" << std::endl;
-            std::cout << "tambem vai aguardar 10 segundo agora" << std::endl;
+            std::cout << "tambem vai aguardar 10 segundo agora." << std::endl;
             delay(10);
         } else {
             switch (escolha) {
