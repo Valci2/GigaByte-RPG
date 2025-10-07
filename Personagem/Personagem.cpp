@@ -9,23 +9,23 @@ Personagem::Personagem(const std::string &nome) : nome(nome) {
 void Personagem::status() {
     std::cout << "============= status =============" << std::endl;
     std::cout << "Nome: " << nome << std::endl;
-    std::cout << "HP: " << maxHP << "/" << HP << std::endl;
-    std::cout << "Mana: " << maxMana << "/" << mana << std::endl;
+    std::cout << "HP: " << HP << "/" << maxHP << std::endl;
+    std::cout << "Mana: " << mana << "/" << maxMana << std::endl;
     std::cout << "Nivel: " << nivel << std::endl;
     std::cout << "Forca: " << forca << std::endl;
     std::cout << "Inteligencia: " << inteligencia << std::endl;
     std::cout << "Defesa: " << defesa << std::endl;
 }
 
-void Personagem::inventario() {
+void Personagem::mostrarinventario() {
     std::cout << "============= inventario =============" << std::endl;
-    std::cout << "ouro: " << itens.getOuro() << std::endl;
-    std::cout << "Pocao de Cura: " << itens.getPocaoDeCura() << std::endl;
-    std::cout << "Pocao de Cura Forte: " << itens.getPocaoDeCuraForte() << std::endl;
-    std::cout << "Pocao de Mana: " << itens.getPocaoDeMana() << std::endl;
-    std::cout << "Pocao de Mana Forte: " << itens.getPocaoDeManaForte() << std::endl;
-    std::cout << "Arma: " << itens.getArma() << std::endl;
-    std::cout << "Armadura: " << itens.getArmadura() << std::endl;
+    std::cout << "Capibas: " << inventario.getCapiba() << std::endl;
+    std::cout << "Pocao de Cura: " << inventario.getPocaoDeCura() << std::endl;
+    std::cout << "Pocao de Cura Forte: " << inventario.getPocaoDeCuraForte() << std::endl;
+    std::cout << "Pocao de Mana: " << inventario.getPocaoDeMana() << std::endl;
+    std::cout << "Pocao de Mana Forte: " << inventario.getPocaoDeManaForte() << std::endl;
+    std::cout << "Arma: " << inventario.getArma() << std::endl;
+    std::cout << "Armadura: " << inventario.getArmadura() << std::endl;
 }
 
 // getter
@@ -67,6 +67,9 @@ int Personagem::getDefesa() {
     return defesa;
 }
 
+Itens &Personagem::getInventario() {
+    return inventario;
+}
 
 // setter
 void Personagem::setNome(const std::string &nome) {

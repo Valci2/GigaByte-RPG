@@ -1,6 +1,7 @@
 #include "Lobby.h"
-#include "../Cenarios/INN.h"
+#include "../Cenarios/INN/INN.h"
 #include "../funcoesUteis/funcoesUteis.h"
+#include "../Cenarios/Loja/Loja.h"
 #include <iostream>
 
 void lobby(Personagem &jogador) {
@@ -22,6 +23,11 @@ void lobby(Personagem &jogador) {
             delay(10);
         } else {
             switch (escolha) {
+                case 2:
+                    std::cout << "indo ate o local" << std::endl;
+                    delay(2);
+                    dentroDaLoja(jogador); // leva o jogador até a loja
+                    break;
                 case 3:
                     std::cout << "indo ate o local" << std::endl;
                     delay(2);
@@ -29,14 +35,15 @@ void lobby(Personagem &jogador) {
                     break;
                 case 4:
                     jogador.status(); // mostra os status do jogador
-                    delay(3);
+                    delay(4);
                     break;
                 case 5:
-                    jogador.inventario(); // mostra o inventario do jogador
-                    delay(3);
+                    jogador.mostrarinventario(); // mostra o inventario do jogador
+                    delay(4);
                     break;
                 default: // caso não seja nenhum das opções acima
                     std::cout << "Ta dando uma de chapezinho? respeita os caminhos!" << std::endl;
+                    delay(3);
             }
         }
     }

@@ -14,7 +14,7 @@ class Personagem {
         int forca = 1;
         int inteligencia = 1;
         int defesa = 0;
-        Itens itens;
+        Itens inventario; // classe de atributo publico
 
     public:
         // construtor
@@ -22,7 +22,7 @@ class Personagem {
 
         // metodos
         void status();
-        void inventario();
+        void mostrarinventario();
 
         // Getter
         const std::string &getNome();
@@ -34,6 +34,7 @@ class Personagem {
         int getForca();
         int getInteligencia();
         int getDefesa();
+        Itens &getInventario();
 
         // Setter
         void setNome(const std::string &nome);
