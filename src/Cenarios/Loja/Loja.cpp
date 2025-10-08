@@ -1,6 +1,6 @@
-#include "Loja.h"
-#include "../../funcoesUteis/funcoesUteis.h"
-#include "../Loja/trocaDosItens.h"
+#include "../../../inc/Cenarios/Loja/Loja.h"
+#include "../../../inc/funcoesUteis/funcoesUteis.h"
+#include "../../../inc/Cenarios/Loja/trocaDosItens.h"
 #include <iostream>
 
 void dentroDaLoja(Personagem &jogador) {

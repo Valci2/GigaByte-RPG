@@ -1,4 +1,4 @@
-#include "Itens.h"
+#include "../../../inc/Personagem/Itens/Itens.h"
 
 // construtor
 Itens::Itens() {}

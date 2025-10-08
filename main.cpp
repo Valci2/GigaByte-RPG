@@ -1,19 +1,19 @@
 #include <iostream>
-#include "Personagem/Personagem.h"
-#include "Historia/Historia.h"
-#include "Lobby/Lobby.h"
+#include "inc/Personagem/Personagem.h"
+#include "inc/Historia/Historia.h"
+#include "inc/Lobby/Lobby.h"
 
 // colar isso no clion para rodar o programa
 /*
-Historia/Historia.cpp
-Historia/funcoesDaHistoria.cpp
-Lobby/Lobby.cpp
-funcoesUteis/funcoesUteis.cpp
-Personagem/Itens/Itens.cpp
-Personagem/Personagem.cpp
-Cenarios/INN/INN.cpp
-Cenarios/Loja/Loja.cpp
-Cenarios/Loja/trocaDosItens.cpp
+src/Historia/Historia.cpp
+src/Historia/funcoesDaHistoria.cpp
+src/Lobby/Lobby.cpp
+src/funcoesUteis/funcoesUteis.cpp
+src/Personagem/Itens/Itens.cpp
+src/Personagem/Personagem.cpp
+src/Cenarios/INN/INN.cpp
+src/Cenarios/Loja/Loja.cpp
+src/Cenarios/Loja/trocaDosItens.cpp
 */
 
 int main() {

@@ -1,4 +1,4 @@
-#include "Personagem.h"
+#include "../../inc/Personagem/Personagem.h"
 #include <iostream>
 
 // cosntrutor

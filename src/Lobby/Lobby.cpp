@@ -1,7 +1,7 @@
-#include "Lobby.h"
-#include "../Cenarios/INN/INN.h"
-#include "../funcoesUteis/funcoesUteis.h"
-#include "../Cenarios/Loja/Loja.h"
+#include "../../inc/Lobby/Lobby.h"
+#include "../../inc/Cenarios/INN/INN.h"
+#include "../../inc/Cenarios/Loja/Loja.h"
+#include "../../inc/funcoesUteis/funcoesUteis.h"
 #include <iostream>
 
 void lobby(Personagem &jogador) {

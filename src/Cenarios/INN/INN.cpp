@@ -1,6 +1,6 @@
-#include "../INN/INN.h"
-#include "../../Personagem/Personagem.h"
-#include "../../funcoesUteis/funcoesUteis.h"
+#include "../../../inc/Cenarios/INN/INN.h"
+#include "../../../inc/Personagem/Personagem.h"
+#include "../../../inc/funcoesUteis/funcoesUteis.h"
 #include <iostream>
 
 void dentroDoINN(Personagem &jogador) {

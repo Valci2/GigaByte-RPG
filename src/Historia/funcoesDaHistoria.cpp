@@ -1,5 +1,5 @@
-#include "funcoesDaHistoria.h"
-#include "../funcoesUteis/funcoesUteis.h"
+#include "../../inc/Historia/funcoesDaHistoria.h"
+#include "../../inc/funcoesUteis/funcoesUteis.h"
 #include <iostream>
 
 void respostaInvalida(int tentativas) {

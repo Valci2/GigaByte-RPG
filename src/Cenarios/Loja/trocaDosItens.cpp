@@ -1,10 +1,12 @@
-#include "trocaDosItens.h"
-#include "../../funcoesUteis/funcoesUteis.h"
-#include "../../Personagem/Personagem.h"
+#include "../../../inc/Personagem/Personagem.h"
+#include "../../../inc/funcoesUteis/funcoesUteis.h"
+#include "../../../inc/Cenarios/Loja/trocaDosItens.h"
 #include <iostream>
 
 void trocaDaArma(Personagem &jogador) {
     while (true) {
+        // ====================================================
+        // trocar isso aqui tudo, tirar a interface da logica de negocio
         std::cout << "============= Arma =============" << std::endl;
         std::cout << "[1] Espada De Circuito (5 capibas)" << std::endl;
         std::cout << "[2] Espada ALU (30 capibas)" << std::endl;

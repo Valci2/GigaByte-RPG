@@ -1,6 +1,6 @@
-#include "Historia.h"
-#include "../funcoesUteis/funcoesUteis.h"
-#include "funcoesDaHistoria.h"
+#include "../../inc/Historia/Historia.h"
+#include "../../inc/funcoesUteis/funcoesUteis.h"
+#include "../../inc/Historia/funcoesDaHistoria.h"
 #include <iostream>
 
 Personagem apresentacao() {

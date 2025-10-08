@@ -3,7 +3,7 @@
 #include <chrono> // Traz ferramentas de tempo, como duração, relógios, contagem de tempo etc.
 #include <limits> // Fornece limites numéricos para os tipos primitivos (como int, float, etc.).
 #include <random> // Para randomizar de forma moderna
-#include "funcoesUteis.h"
+#include "../../inc/funcoesUteis/funcoesUteis.h"
 
 // limpa a entrada de uma resposta errada
 void limparEntrada() {
