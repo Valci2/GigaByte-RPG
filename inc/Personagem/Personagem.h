@@ -24,6 +24,13 @@ class Personagem {
         void status();
         void mostrarinventario();
 
+
+        // metodos para usar itens
+        void usarPocaoDeCura();
+        void usarPocaoDeCuraForte();
+        void usarPocaoDeMana();
+        void usarPocaoDeManaForte();
+
         // Getter
         const std::string &getNome();
         int getHP();

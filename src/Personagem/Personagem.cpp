@@ -28,6 +28,46 @@ void Personagem::mostrarinventario() {
     std::cout << "Armadura: " << inventario.getArmadura() << std::endl;
 }
 
+void Personagem::usarPocaoDeCura() {
+    if (getInventario().getPocaoDeCura() > 0) {
+        if (HP < maxHP) {
+            HP += 5;
+            if (HP > maxHP) {
+                HP = maxHP;
+            }
+        }
+    }
+}
+
+void Personagem::usarPocaoDeCuraForte() {
+    if (getInventario().getPocaoDeCuraForte()) {
+        if (HP < maxHP) {
+            HP += 15;
+            if (HP > maxHP) {
+                HP = maxHP;
+            }
+        }
+    }
+}
+
+void Personagem::usarPocaoDeMana() {
+    if (mana < maxMana) {
+        mana += 5;
+        if (mana > maxMana) {
+            mana = maxMana;
+        }
+    }
+}
+
+void Personagem::usarPocaoDeManaForte() {
+    if (mana < maxMana) {
+        mana += 15;
+        if (mana > maxMana) {
+            mana = maxMana;
+        }
+    }
+}
+
 // getter
 const std::string &Personagem::getNome() {
     return nome;

@@ -3,12 +3,6 @@
 // construtor
 Itens::Itens() {}
 
-// metodos
-void Itens::usarPocaoDeCura() {}
-void Itens::usarPocaoDeCuraForte() {}
-void Itens::usarPocaoDeMana() {}
-void Itens::usarPocaoDeManaForte() {}
-
 // getter
 int Itens::getCapiba() {
     return capiba;

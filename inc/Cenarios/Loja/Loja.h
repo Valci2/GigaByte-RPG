@@ -1,3 +1,5 @@
-#include "../../Personagem/Personagem.h"
+#pragma once
 
-void dentroDaLoja(Personagem &jogador);
+class Loja {
+    public:
+};

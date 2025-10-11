@@ -1,50 +1,56 @@
 #include "../../inc/Lobby/Lobby.h"
-#include "../../inc/Cenarios/INN/INN.h"
-#include "../../inc/Cenarios/Loja/Loja.h"
-#include "../../inc/funcoesUteis/funcoesUteis.h"
+#include "../../inc/utilitarios/utilitarios.h"
 #include <iostream>
 
-void lobby(Personagem &jogador) {
-    while (true) {
-        std::cout << "============= Lobby =============" << std::endl;
-        std::cout << "[1] Fases" << std::endl;
-        std::cout << "[2] Loja" << std::endl;
-        std::cout << "[3] INN" << std::endl;
-        std::cout << "[4] Status" << std::endl;
-        std::cout << "[5] Inventario" << std::endl;
+Lobby::Lobby(Personagem &jogador) : jogador(jogador) {}
 
-        int escolha = 0;
-        std::cout << "O que voce quer fazer: ";
+void Lobby::mostrarMenu() const {
+    std::cout << "============== Lobby ==============" << std::endl;
+    std::cout << "[1] - Fases" << std::endl;
+    std::cout << "[2] - Loja" << std::endl;
+    std::cout << "[3] - INN" << std::endl;
+    std::cout << "[4] - Status" << std::endl;
+    std::cout << "[5] - Inventario" << std::endl;
+    std::cout << "[0] - Sair" << std::endl;
+}
+
+void Lobby::processarEscolha(int escolha) {
+    switch (escolha) {
+        case 3:
+
+            inn.entrar(jogador);
+            break;
+        case 4:
+            jogador.status();
+            delay(2);
+            break;
+        case 5:
+            jogador.mostrarinventario();
+            delay(2);
+            break;
+        case 0:
+            exit(0);
+        default:
+            std::cout << "Fora do tamanho da array" << std::endl;
+            delay(3);
+    }
+}
+
+void Lobby::iniciar() {
+    int escolha = 0;
+    do {
+        mostrarMenu();
+        std::cout << "Escolha: ";
         std::cin >> escolha;
+
         if (std::cin.fail()) {
             limparEntrada();
-            std::cout << "ta tendo me testar ou eh para fritar minha paciencia?" << std::endl;
-            std::cout << "tambem vai aguardar 10 segundo agora." << std::endl;
-            delay(10);
-        } else {
-            switch (escolha) {
-                case 2:
-                    std::cout << "indo ate o local" << std::endl;
-                    delay(2);
-                    dentroDaLoja(jogador); // leva o jogador até a loja
-                    break;
-                case 3:
-                    std::cout << "indo ate o local" << std::endl;
-                    delay(2);
-                    dentroDoINN(jogador); // leva o jogador para dentro do INN
-                    break;
-                case 4:
-                    jogador.status(); // mostra os status do jogador
-                    delay(4);
-                    break;
-                case 5:
-                    jogador.mostrarinventario(); // mostra o inventario do jogador
-                    delay(4);
-                    break;
-                default: // caso não seja nenhum das opções acima
-                    std::cout << "Ta dando uma de chapezinho? respeita os caminhos!" << std::endl;
-                    delay(3);
-            }
+            std::cout << "Entrada inválida!" << std::endl;
+            delay(2);
+            continue;
         }
-    }
+
+        processarEscolha(escolha);
+
+    } while (escolha != 0);
 }

@@ -1,61 +1,42 @@
 #include "../../../inc/Cenarios/INN/INN.h"
-#include "../../../inc/Personagem/Personagem.h"
-#include "../../../inc/funcoesUteis/funcoesUteis.h"
+#include "../../../inc/utilitarios/utilitarios.h"
+
 #include <iostream>
 
-void dentroDoINN(Personagem &jogador) {
-    std::cout << "============= INN =============" << std::endl;
-    std::cout << "Ola meu chapa " << jogador.getNome() << " acho que voce merece um descanco." << std::endl;
-    std::cout << "HP: " << jogador.getHP() << "/" << jogador.getMaxHP() << std::endl;
-    std::cout << "Mana: " << jogador.getMana() << "/" << jogador.getMaxMana() << std::endl;
-
-    int capibasDoJogador = jogador.getInventario().getCapiba();
-    int precoDeDormir = static_cast<int>(capibasDoJogador * 0.1);
-
-    if (capibasDoJogador <= 9) {
-        std::cout << "tu ta tao pobre que eu deixo voce dormir aqui de graca." << std::endl;
-    } else {
-        std::cout << "Voce precisa de pelo menos " << precoDeDormir << " capibas para dormir." << std::endl;
-        std::cout << "Voce tem " << capibasDoJogador << " capibas." << std::endl;
-    }
-    linha();
-    std::cout << "[1] dormir" << std::endl;
-    std::cout << "[2] sair " << std::endl;
-
+void INN::entrar(Personagem &jogador) {
     int escolha = 0;
-
     while (true) {
+        std::cout << "============== INN ==============" << std::endl;
+        std::cout << "[1] Dormir" << std::endl;
+        std::cout << "[2] Sair" << std::endl;
+        std::cout << "Escolha: " << std::endl;
+
         std::cin >> escolha;
 
         if (std::cin.fail()) {
             limparEntrada();
-            std::cout << "Nao aceitamos strings, apenas ints." << std::endl;
-            continue;
+            std::cout << "Nao aceitamos strings, apenas ints" << std::endl;
         }
 
         switch (escolha) {
             case 1:
-                if (capibasDoJogador >= precoDeDormir) {
-                    jogador.getInventario().setCapiba(capibasDoJogador - precoDeDormir);
-                    jogador.setHP(jogador.getMaxHP());
-                    jogador.setMana(jogador.getMaxMana());
-                    std::cout << jogador.getNome() << " esta dormindo como um como se tivessem desligador da tomada." <<
-                            std::endl;
-                    std::cout << "ZZZZZZZZZZZZ" << std::endl;
-                    delay(2);
-                    return; // volta para o lobby depois de dormir
-                }
-                std::cout << "Voce nao tem capibas suficientes para dormir." << std::endl;
-                break;
-
+                std::cout << "Olha... ele dorme como um anjinho" << std::endl;
+                std::cout << "ZZZZZZZZZZZZ" << std::endl;
+                dormir(jogador);
+                delay(3);
+                return;
             case 2:
-                std::cout << "Saindo do INN..." << std::endl;
+                std::cout << "Saindo do INN" << std::endl;
                 delay(2);
-                return; // volta para o lobby
-
+                return;
             default:
-                std::cout << "O INN so suporta os digitos 1 e 2" << std::endl;
-                break;
+                std::cout << "So temos as duas opcões acima" << std::endl;
         }
     }
+}
+
+
+void INN::dormir(Personagem &jogador) {
+    jogador.setHP(jogador.getMaxHP());
+    jogador.setMana(jogador.getMaxMana());
 }
