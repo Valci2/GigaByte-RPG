@@ -20,52 +20,28 @@ void Personagem::status() {
 void Personagem::mostrarinventario() {
     std::cout << "============= inventario =============" << std::endl;
     std::cout << "Capibas: " << inventario.getCapiba() << std::endl;
-    std::cout << "Pocao de Cura: " << inventario.getPocaoDeCura() << std::endl;
-    std::cout << "Pocao de Cura Forte: " << inventario.getPocaoDeCuraForte() << std::endl;
-    std::cout << "Pocao de Mana: " << inventario.getPocaoDeMana() << std::endl;
-    std::cout << "Pocao de Mana Forte: " << inventario.getPocaoDeManaForte() << std::endl;
+    std::cout << "Pocao de Cura: " << inventario.getPocaoDeCura() << "/10" << std::endl;
+    std::cout << "Pocao de Cura Forte: " << inventario.getPocaoDeCuraForte() << "/10" << std::endl;
+    std::cout << "Pocao de Mana: " << inventario.getPocaoDeMana() << "/10" << std::endl;
+    std::cout << "Pocao de Mana Forte: " << inventario.getPocaoDeManaForte() << "/10" << std::endl;
     std::cout << "Arma: " << inventario.getArma() << std::endl;
     std::cout << "Armadura: " << inventario.getArmadura() << std::endl;
 }
 
 void Personagem::usarPocaoDeCura() {
-    if (getInventario().getPocaoDeCura() > 0) {
-        if (HP < maxHP) {
-            HP += 5;
-            if (HP > maxHP) {
-                HP = maxHP;
-            }
-        }
-    }
+
 }
 
 void Personagem::usarPocaoDeCuraForte() {
-    if (getInventario().getPocaoDeCuraForte()) {
-        if (HP < maxHP) {
-            HP += 15;
-            if (HP > maxHP) {
-                HP = maxHP;
-            }
-        }
-    }
+
 }
 
 void Personagem::usarPocaoDeMana() {
-    if (mana < maxMana) {
-        mana += 5;
-        if (mana > maxMana) {
-            mana = maxMana;
-        }
-    }
+
 }
 
 void Personagem::usarPocaoDeManaForte() {
-    if (mana < maxMana) {
-        mana += 15;
-        if (mana > maxMana) {
-            mana = maxMana;
-        }
-    }
+
 }
 
 // getter

@@ -16,6 +16,9 @@ void Lobby::mostrarMenu() const {
 
 void Lobby::processarEscolha(int escolha) {
     switch (escolha) {
+        case 1:
+            fases.entrar(jogador);
+            break;
         case 2:
             std::cout << "Caminhando até a Loja" << std::endl;
             delay(1);
@@ -37,7 +40,7 @@ void Lobby::processarEscolha(int escolha) {
         case 9:
             break;
         default:
-            std::cout << "Fora do tamanho da array!" << std::endl;
+            std::cout << "Entrada inesperada, não coloquei ainda esse caminho!" << std::endl;
             delay(2);
     }
 }
@@ -52,7 +55,7 @@ void Lobby::iniciar() {
 
         if (std::cin.fail()) {
             limparEntrada();
-            std::cout << "Entrada inválida!" << std::endl;
+            std::cout << "nao tem um caminho em string" << std::endl;
             delay(2);
             continue;
         }

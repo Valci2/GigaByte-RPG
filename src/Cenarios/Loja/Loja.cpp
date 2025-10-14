@@ -76,13 +76,13 @@ void Loja::entrar(Personagem &jogador) {
 
 // ================= Menus ===================
 void Loja::menuDeCompras() {
-    std::cout << "[1] Comprar uma Nova Arma" << std::endl;
-    std::cout << "[2] Comprar uma Nova Armadura" << std::endl;
-    std::cout << "[3] Comprar Pocao de Cura (10)" << std::endl;
-    std::cout << "[4] Comprar Pocao de Cura Forte (40)" << std::endl;
-    std::cout << "[5] Comprar Pocao de Mana (50)" << std::endl;
-    std::cout << "[6] Comprar Pocao de Mana Forte (100)" << std::endl;
-    std::cout << "[7] Sair da Loja" << std::endl;
+    std::cout << "[1] - Comprar uma Nova Arma" << std::endl;
+    std::cout << "[2] - Comprar uma Nova Armadura" << std::endl;
+    std::cout << "[3] - Comprar Pocao de Cura (10)" << std::endl;
+    std::cout << "[4] - Comprar Pocao de Cura Forte (40)" << std::endl;
+    std::cout << "[5] - Comprar Pocao de Mana (50)" << std::endl;
+    std::cout << "[6] - Comprar Pocao de Mana Forte (100)" << std::endl;
+    std::cout << "[7] - Sair da Loja" << std::endl;
 }
 
 void Loja::menuDeItens(const std::vector<itensDeCompra> &itens, Personagem &jogador,
@@ -91,7 +91,7 @@ void Loja::menuDeItens(const std::vector<itensDeCompra> &itens, Personagem &joga
     do {
         titulo(tituloMenu);
         for (int i = 0; i < itens.size(); i++) {
-            std::cout << "[" << i + 1 << "] " << itens[i].nome << " (" << itens[i].preco << ")\n";
+            std::cout << "[" << i + 1 << "] - " << itens[i].nome << " (" << itens[i].preco << ")\n";
         }
 
         std::cout << "[" << itens.size() + 1 << "] Voltar\n";

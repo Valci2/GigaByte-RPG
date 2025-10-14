@@ -12,7 +12,7 @@ include_directories(inc)
 
 # Agrupa todos os arquivos automaticamente
 file(GLOB_RECURSE SOURCES
-        src/Cenarios/fases/fases.cpp
+        src/Cenarios/Fases/Fases.cpp
         src/Cenarios/INN/INN.cpp
         src/Cenarios/Loja/Loja.cpp
         src/utilitarios/utilitarios.cpp
@@ -20,7 +20,7 @@ file(GLOB_RECURSE SOURCES
         src/Lobby/Lobby.cpp
         src/Personagem/Personagem.cpp
         src/Personagem/Itens/Itens.cpp
-        src/Monstros/monstros.cpp
+        src/Monstros/Monstro.cpp
         src/main.cpp
 )
 
