@@ -57,6 +57,6 @@ void Itens::setArma(const std::string &arma) {
     this->arma = arma;
 }
 
-void Itens::serArmadura(const std::string &armadura) {
+void Itens::setArmadura(const std::string &armadura) {
     this->armadura = armadura;
 }

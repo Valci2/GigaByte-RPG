@@ -1,6 +1,6 @@
-#include "../inc/Personagem/Personagem.h"
-#include "../inc/Historia/Historia.h"
-#include "../inc/Lobby/Lobby.h"
+#include "Personagem/Personagem.h"
+#include "Historia/Historia.h"
+#include "Lobby/Lobby.h"
 
 // colar isso no clion para rodar o programa
 /*

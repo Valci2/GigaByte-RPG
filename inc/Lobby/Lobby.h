@@ -13,5 +13,4 @@ public:
     void mostrarMenu() const;
     void processarEscolha(int escolha);
     void iniciar();
-
 };

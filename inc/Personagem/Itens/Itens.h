@@ -28,7 +28,7 @@ public:
     void setPocaoDeMana(int pocaoDeMana);
     void setPocaoDeManaForte(int pocaoDeManaForte);
     void setArma(const std::string &arma);
-    void serArmadura(const std::string &armadura);
+    void setArmadura(const std::string &armadura);
 
     // getter
     int getCapiba();
