@@ -16,11 +16,7 @@ public:
     Itens();
 
     // metodos
-    void usarPocaoDeCura();
-    void usarPocaoDeCuraForte();
-    void usarPocaoDeMana();
-    void usarPocaoDeManaForte();
-
+    void adicionarPocao(const std::string &nome, int quantidade);
     // setter
     void setCapiba(int capiba);
     void setPocaoDeCura(int pocaoDeCura);

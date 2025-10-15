@@ -1,7 +1,15 @@
 #include "../../../inc/Personagem/Itens/Itens.h"
 
 // construtor
-Itens::Itens() {}
+Itens::Itens() {
+}
+
+void Itens::adicionarPocao(const std::string &nome, int quantidade) {
+    if (nome == "Pocao de Cura") pocaoDeCura += quantidade;
+    else if (nome == "Pocao de Cura Forte") pocaoDeCuraForte += quantidade;
+    else if (nome == "Pocao de Mana") pocaoDeMana += quantidade;
+    else if (nome == "Pocao de Mana Forte") pocaoDeManaForte += quantidade;
+}
 
 // getter
 int Itens::getCapiba() {

@@ -5,7 +5,7 @@
 struct itensDeCompra;
 
 class Loja {
-    public:
+public:
     Loja() = default;
 
     // entrada da loja
@@ -16,9 +16,9 @@ class Loja {
 
     // menu das armas e a logica de troca das armas e armaduras
     void menuDeItens(const std::vector<itensDeCompra> &itens, Personagem &jogador,
-                       const std::string &tituloMenu, const std::string &tipo);
-    bool trocarItens(const std::vector<itensDeCompra> &itens, Personagem &jogador, int escolha, const std::string& tipo);
+                     const std::string &tituloMenu, const std::string &tipo);
+    bool trocarItens(const std::vector<itensDeCompra> &itens, Personagem &jogador, int escolha,
+                     const std::string &tipo);
 
-    // compra de poção
-    void comprarPocao(int tipoPocao, Personagem &jogador, int quantidade);
+    void comprarPocao(const std::vector<itensDeCompra> &pocoes, int escolha, Personagem &jogador, int quantidade);
 };

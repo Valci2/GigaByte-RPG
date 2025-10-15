@@ -10,7 +10,7 @@ struct itensDeCompra {
 };
 
 // ============== itens disponiveis para comprar ==============
-// armas
+// Armas
 const std::vector<itensDeCompra> armasDisponiveis = {
     {"Espada de cobre", 10},
     {"Espada de circuito", 30},
@@ -19,7 +19,7 @@ const std::vector<itensDeCompra> armasDisponiveis = {
     {"Espada de agua", 300}
 };
 
-// armaduras
+// Armaduras
 const std::vector<itensDeCompra> armadurasDisponiveis = {
     {"Armadura de bronze", 15},
     {"Armadura de circuito integrado", 40},
@@ -28,15 +28,28 @@ const std::vector<itensDeCompra> armadurasDisponiveis = {
     {"Armadura com IA", 310}
 };
 
+// Pocoes
+const std::vector<itensDeCompra> pocoesDisponiveis = {
+    {"Pocao de Cura", 10},
+    {"Pocao de Cura Forte", 40},
+    {"Pocao de Mana", 50},
+    {"Pocao de Mana Forte", 100}
+};
+
+
 // ====================== Enum para menu ======================
 enum TipoCompra {
     COMPRA_ARMA = 1,
     COMPRA_ARMADURA,
-    POCAO_CURA,
+    COMPRA_POCOES,
+    SAIR
+};
+
+enum pocao {
+    POCAO_CURA = 0,
     POCAO_CURA_FORTE,
     POCAO_MANA,
     POCAO_MANA_FORTE,
-    SAIR = 7
 };
 
 // ================= Principal ===================
@@ -48,7 +61,7 @@ void Loja::entrar(Personagem &jogador) {
         linha();
         menuDeCompras();
         linha();
-        escolha = validarEscolha(1, 7);
+        escolha = validarEscolha(1, 4);
         switch (escolha) {
             case COMPRA_ARMA:
                 menuDeItens(armasDisponiveis, jogador, "Armas Disponiveis", "arma");
@@ -56,16 +69,9 @@ void Loja::entrar(Personagem &jogador) {
             case COMPRA_ARMADURA:
                 menuDeItens(armadurasDisponiveis, jogador, "Armaduras Disponiveis", "armadura");
                 break;
-            case POCAO_CURA:
-            case POCAO_CURA_FORTE:
-            case POCAO_MANA:
-            case POCAO_MANA_FORTE: {
-                std::cout << "Quantas poções deseja comprar (1 a 10)?\n";
-                int quantidade = validarEscolha(1, 10);
-                comprarPocao(escolha, jogador, quantidade);
+            case COMPRA_POCOES:
+                menuDeItens(pocoesDisponiveis, jogador, "Pocoes Disponiveis", "pocao");
                 break;
-            }
-
             case SAIR:
                 std::cout << "Saindo da loja" << std::endl;
                 delay(1);
@@ -78,11 +84,8 @@ void Loja::entrar(Personagem &jogador) {
 void Loja::menuDeCompras() {
     std::cout << "[1] - Comprar uma Nova Arma" << std::endl;
     std::cout << "[2] - Comprar uma Nova Armadura" << std::endl;
-    std::cout << "[3] - Comprar Pocao de Cura (10)" << std::endl;
-    std::cout << "[4] - Comprar Pocao de Cura Forte (40)" << std::endl;
-    std::cout << "[5] - Comprar Pocao de Mana (50)" << std::endl;
-    std::cout << "[6] - Comprar Pocao de Mana Forte (100)" << std::endl;
-    std::cout << "[7] - Sair da Loja" << std::endl;
+    std::cout << "[3] - Comprar Pocoes" << std::endl;
+    std::cout << "[4] - Sair da Loja" << std::endl;
 }
 
 void Loja::menuDeItens(const std::vector<itensDeCompra> &itens, Personagem &jogador,
@@ -90,29 +93,38 @@ void Loja::menuDeItens(const std::vector<itensDeCompra> &itens, Personagem &joga
     int escolha = 0;
     do {
         titulo(tituloMenu);
-        for (int i = 0; i < itens.size(); i++) {
-            std::cout << "[" << i + 1 << "] - " << itens[i].nome << " (" << itens[i].preco << ")\n";
+        for (size_t i = 0; i < itens.size(); i++) {
+            const auto &item = itens[i];
+            std::cout << "[" << i + 1 << "] " << item.nome << " - Preco (" << item.preco << ")" << std::endl;
         }
 
-        std::cout << "[" << itens.size() + 1 << "] Voltar\n";
-        std::cout << "Você possui " << jogador.getInventario().getCapiba() << " Capibas\n";
+        std::cout << "[" << itens.size() + 1 << "] Voltar" << std::endl;
+        std::cout << "Você possui " << jogador.getInventario().getCapiba() << " Capibas" << std::endl;
         escolha = validarEscolha(1, itens.size() + 1);
 
         if (escolha > 0 && escolha <= itens.size()) {
-            bool conseguiu = trocarItens(itens, jogador, escolha - 1, tipo);
-            if (conseguiu) {
-                std::cout << "Voce comprou " << itens[escolha - 1].nome << "!" << std::endl;
+            if (tipo == "pocao") {
+                std::cout << "Escolha a quantidade entre (1 a 10)." << std::endl;
+                int quantidadeDePocoes = validarEscolha(1, 10);
+                comprarPocao(itens, escolha - 1, jogador, quantidadeDePocoes);
             } else {
-                std::cout << "voce não possui cabibas suficientes. O preco e " << itens[escolha - 1].preco <<
-                        " e voce possui " << jogador.getInventario().getCapiba() << std::endl;
+                bool conseguiu = trocarItens(itens, jogador, escolha - 1, tipo);
+
+                if (conseguiu) {
+                    std::cout << "Voce comprou " << itens[escolha - 1].nome << "!" << std::endl;
+                } else {
+                    std::cout << "voce não possui cabibas suficientes. O preco e " << itens[escolha - 1].preco <<
+                            " e voce possui " << jogador.getInventario().getCapiba() << std::endl;
+                }
+                delay(1);
             }
-            delay(1);
         }
     } while (escolha != itens.size() + 1);
 }
 
 // ================== Troca a armadura e a Arma ==================
-bool Loja::trocarItens(const std::vector<itensDeCompra> &itens, Personagem &jogador, int escolha, const std::string& tipo) {
+bool Loja::trocarItens(const std::vector<itensDeCompra> &itens, Personagem &jogador, int escolha,
+                       const std::string &tipo) {
     const itensDeCompra &item = itens[escolha];
     int capibasDoJogador = jogador.getInventario().getCapiba();
 
@@ -120,8 +132,7 @@ bool Loja::trocarItens(const std::vector<itensDeCompra> &itens, Personagem &joga
         jogador.getInventario().setCapiba(capibasDoJogador - item.preco);
         if (tipo == "arma") {
             jogador.getInventario().setArma(item.nome);
-        }
-        else if (tipo == "armadura") {
+        } else if (tipo == "armadura") {
             jogador.getInventario().setArmadura(item.nome);
         }
         return true;
@@ -131,35 +142,51 @@ bool Loja::trocarItens(const std::vector<itensDeCompra> &itens, Personagem &joga
 }
 
 // ====================== Compra de Poções ======================
-void Loja::comprarPocao(int tipoPocao, Personagem &jogador, int quantidade) {
-    int precoUnitario = 0;
-    std::string nomePocao;
+void Loja::comprarPocao(const std::vector<itensDeCompra> &pocoes, int escolha, Personagem &jogador, int quantidade) {
+    const int LIMITE_DE_POCOES = 10;
+    const auto &item = pocoes[escolha];
+    std::string nomePocao = item.nome;
+    int precoUnitario = item.preco;
+    int quantidadePocao = 0;
 
-    switch (tipoPocao) {
-        case POCAO_CURA: precoUnitario = 10; nomePocao = "Poção de Cura"; break;
-        case POCAO_CURA_FORTE: precoUnitario = 40; nomePocao = "Poção de Cura Forte"; break;
-        case POCAO_MANA: precoUnitario = 50; nomePocao = "Poção de Mana"; break;
-        case POCAO_MANA_FORTE: precoUnitario = 100; nomePocao = "Poção de Mana Forte"; break;
+    switch (escolha) {
+        case POCAO_CURA:
+            quantidadePocao = jogador.getInventario().getPocaoDeCura();
+            break;
+        case POCAO_CURA_FORTE:
+            quantidadePocao = jogador.getInventario().getPocaoDeCuraForte();
+            break;
+        case POCAO_MANA:
+            quantidadePocao = jogador.getInventario().getPocaoDeMana();
+            break;
+        case POCAO_MANA_FORTE:
+            quantidadePocao = jogador.getInventario().getPocaoDeManaForte();
+            break;
     }
 
-    int custoTotal = precoUnitario * quantidade;
-    int capibasDoJogador = jogador.getInventario().getCapiba();
+    int espacoDisponivel = LIMITE_DE_POCOES - quantidadePocao;
+    if (espacoDisponivel <= 0) {
+        std::cout << "Você já atingiu o limite de poções!" << std::endl;
+        return;
+    }
 
+    if (quantidade > espacoDisponivel) {
+        std::cout << "Limite atingido! Só pode comprar " << espacoDisponivel << "." << std::endl;
+        quantidade = espacoDisponivel;
+    }
+
+    int capibasDoJogador = jogador.getInventario().getCapiba();
+    int custoTotal = precoUnitario * quantidade;
     if (capibasDoJogador < custoTotal) {
-        std::cout << "Capibas insuficientes! Você possui " << capibasDoJogador
-                  << " e precisa de " << custoTotal << ".\n";
+        std::cout << "Capibas insuficientes!" << " Faltam " << custoTotal - capibasDoJogador << " Capibas." <<
+                std::endl;
         return;
     }
 
     jogador.getInventario().setCapiba(capibasDoJogador - custoTotal);
+    jogador.getInventario().adicionarPocao(nomePocao, quantidade);
 
-    switch (tipoPocao) {
-        case POCAO_CURA: jogador.getInventario().setPocaoDeCura(quantidade); break;
-        case POCAO_CURA_FORTE: jogador.getInventario().setPocaoDeCuraForte(quantidade); break;
-        case POCAO_MANA: jogador.getInventario().setPocaoDeMana(quantidade); break;
-        case POCAO_MANA_FORTE: jogador.getInventario().setPocaoDeManaForte(quantidade); break;
-    }
-
-    std::cout << "Você comprou " << quantidade << "x " << nomePocao << "!\n";
+    std::cout << "Você comprou " << quantidade << "x " << nomePocao << " por " << custoTotal << " Capibas!";
+    std::cout << "Saldo atual: " << jogador.getInventario().getCapiba() << " Capibas." << std::endl;
     delay(1);
 }
