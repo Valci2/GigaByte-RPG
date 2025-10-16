@@ -1,1 +1,2 @@
-#include "../../inc/Monstros/Monstro.h"
+#include "Monstros/Monstro.h"
+

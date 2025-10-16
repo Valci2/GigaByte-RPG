@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "Personagem/Itens/Itens.h"
+#include "Itens.h"
 
 class monstro {
 private:
@@ -17,6 +17,6 @@ private:
 public:
     monstro(const std::string &nome, int vida, int forca, int inteligencia, int defesa);
     virtual void atacar() = 0; // metodo virtual que todo monstro tera que possuir
-    virtual void defender() = 0; //
-    virtual void usarPocoes() = 0;
+    virtual void defender() = 0; // defender
+    virtual void usarPocoes() = 0; // ele pode ter entre 2 ou tres pocoes de cura, vão ter 5% de chance de usar.
 };

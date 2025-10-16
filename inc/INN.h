@@ -1,5 +1,5 @@
 #pragma once
-#include "../../Personagem/Personagem.h"
+#include "Personagem.h"
 
 class INN {
 public:

@@ -1,5 +1,5 @@
-#include "Cenarios/INN/INN.h"
-#include "utilitarios/utilitarios.h"
+#include "INN.h"
+#include "utilitarios.h"
 #include <iostream>
 
 void INN::entrar(Personagem &jogador) {

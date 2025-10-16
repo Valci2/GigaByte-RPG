@@ -8,18 +8,20 @@ project(RPG)
 set(CMAKE_CXX_STANDARD 20)
 
 # Adiciona o diretório include/ como caminho para os arquivos de cabeçalho (.hpp)
-include_directories(inc)
+include_directories(inc
+    inc/Monstros
+)
 
 # Agrupa todos os arquivos automaticamente
 file(GLOB_RECURSE SOURCES
-        src/Cenarios/Fases/Fases.cpp
-        src/Cenarios/INN/INN.cpp
-        src/Cenarios/Loja/Loja.cpp
-        src/utilitarios/utilitarios.cpp
-        src/Historia/Historia.cpp
-        src/Lobby/Lobby.cpp
-        src/Personagem/Personagem.cpp
-        src/Personagem/Itens/Itens.cpp
+        src/Fases.cpp
+        src/INN.cpp
+        src/Loja.cpp
+        src/utilitarios.cpp
+        src/Historia.cpp
+        src/Lobby.cpp
+        src/Personagem.cpp
+        src/Itens.cpp
         src/Monstros/Monstro.cpp
         src/main.cpp
 )

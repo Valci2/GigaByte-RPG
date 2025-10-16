@@ -1,5 +1,5 @@
-#include "Cenarios/Loja/Loja.h"
-#include "utilitarios/utilitarios.h"
+#include "Loja.h"
+#include "utilitarios.h"
 #include <iostream>
 #include <vector>
 

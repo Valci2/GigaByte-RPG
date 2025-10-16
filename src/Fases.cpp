@@ -1,4 +1,4 @@
-#include "Cenarios/Fases/Fases.h"
+#include "Fases.h"
 #include <iostream>
 
 // partes da primeira fase

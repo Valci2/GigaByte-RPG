@@ -1,5 +1,5 @@
 #pragma once
-#include "../../Personagem/Personagem.h"
+#include "Personagem.h"
 #include <vector>
 
 struct itensDeCompra;

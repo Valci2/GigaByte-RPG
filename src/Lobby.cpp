@@ -1,5 +1,5 @@
-#include "Lobby/Lobby.h"
-#include "utilitarios/utilitarios.h"
+#include "Lobby.h"
+#include "utilitarios.h"
 #include <iostream>
 
 Lobby::Lobby(Personagem &jogador) : jogador(jogador) {}

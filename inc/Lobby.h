@@ -1,8 +1,8 @@
 #pragma once
-#include "../Personagem/Personagem.h"
-#include "../Cenarios/INN/INN.h"
-#include "../Cenarios/Loja/Loja.h"
-#include "../Cenarios/Fases/Fases.h"
+#include "Personagem.h"
+#include "INN.h"
+#include "Loja.h"
+#include "Fases.h"
 
 class Lobby {
 private:
