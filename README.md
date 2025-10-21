@@ -44,7 +44,10 @@ Seu objetivo?
 ```
 GigaByte-RPG/
 ├── inc/                    # Cabeçalhos (.h)
+<<<<<<< HEAD
 │   ├── Monstros
+=======
+>>>>>>> 7cf6efd7591f3367513886957c089e8c2729662f
 │   ├── Fases.h
 │   ├── Historia.h
 │   ├── INN.h
@@ -55,7 +58,10 @@ GigaByte-RPG/
 │   └── Utilitarios.h
 │
 ├── src/                    # Implementações (.cpp)
+<<<<<<< HEAD
 │   ├── Monstros
+=======
+>>>>>>> 7cf6efd7591f3367513886957c089e8c2729662f
 │   ├── Fases.cpp
 │   ├── Historia.cpp
 │   ├── INN.cpp
@@ -135,7 +141,10 @@ Dependendo da escolha, a história segue um rumo diferente — com muito humor e
 ## 💾 Próximas Expansões
 
 * 🧟 Sistema de inimigos e batalhas (Monstros)
+<<<<<<< HEAD
 * 💬 Diálogos com NPCs
+=======
+>>>>>>> 7cf6efd7591f3367513886957c089e8c2729662f
 * 🧰 Sistema de inventário completo
 * 🎯 Sistema de habilidades (magias e golpes especiais)
 
@@ -159,7 +168,10 @@ Este projeto foi desenvolvido para **aprender C++ na prática**, aplicando:
 Projeto desenvolvido para estudos de **POO / EDOO**, com C++ e CMake.
 
 > “Um jogo dentro do PC, feito dentro do PC, que roda dentro do PC.” — *o dev, provavelmente.*
+<<<<<<< HEAD
 
 ---
 
 Quer que eu adicione uma seção final com **prints (simulados)** do terminal, mostrando o início do jogo com cores e layout estilo RPG de texto (exemplo visual dentro do README)? Isso deixa o repositório muito mais atrativo visualmente.
+=======
+>>>>>>> 7cf6efd7591f3367513886957c089e8c2729662f
