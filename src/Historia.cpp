@@ -1,5 +1,5 @@
 #include "Historia.h"
-#include "utilitarios.h"
+#include "Utilitarios.h"
 #include <iostream>
 
 void respostaInvalida(int tentativas) {

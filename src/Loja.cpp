@@ -1,5 +1,5 @@
 #include "Loja.h"
-#include "utilitarios.h"
+#include "Utilitarios.h"
 #include <iostream>
 #include <vector>
 
@@ -72,12 +72,11 @@ void Loja::entrar(Personagem &jogador) {
             case COMPRA_POCOES:
                 menuDeItens(pocoesDisponiveis, jogador, "Pocoes Disponiveis", "pocao");
                 break;
-            case SAIR:
-                std::cout << "Saindo da loja" << std::endl;
-                delay(1);
-                return;
         }
     } while (escolha != SAIR);
+
+    std::cout << "Saindo da loja" << std::endl;
+    delay(1);
 }
 
 // ================= Menus ===================
@@ -85,7 +84,7 @@ void Loja::menuDeCompras() {
     std::cout << "[1] - Comprar uma Nova Arma" << std::endl;
     std::cout << "[2] - Comprar uma Nova Armadura" << std::endl;
     std::cout << "[3] - Comprar Pocoes" << std::endl;
-    std::cout << "[4] - Sair da Loja" << std::endl;
+    std::cout << "[4] - Voltar" << std::endl;
 }
 
 void Loja::menuDeItens(const std::vector<itensDeCompra> &itens, Personagem &jogador,
@@ -137,7 +136,6 @@ bool Loja::trocarItens(const std::vector<itensDeCompra> &itens, Personagem &joga
         }
         return true;
     }
-
     return false;
 }
 

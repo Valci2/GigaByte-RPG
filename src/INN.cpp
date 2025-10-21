@@ -1,5 +1,5 @@
 #include "INN.h"
-#include "utilitarios.h"
+#include "Utilitarios.h"
 #include <iostream>
 
 void INN::entrar(Personagem &jogador) {
@@ -7,7 +7,7 @@ void INN::entrar(Personagem &jogador) {
     while (true) {
         titulo("INN");
         std::cout << "[1] Dormir" << std::endl;
-        std::cout << "[2] Sair do INN" << std::endl;
+        std::cout << "[2] Voltar" << std::endl;
 
         escolha = validarEscolha(1, 2);
 

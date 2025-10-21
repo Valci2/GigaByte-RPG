@@ -3,7 +3,7 @@
 #include <chrono> // Traz ferramentas de tempo, como duração, relógios, contagem de tempo etc.
 #include <limits> // Fornece limites numéricos para os tipos primitivos (como int, float, etc.).
 #include <random> // Para randomizar de forma moderna
-#include "utilitarios.h"
+#include "Utilitarios.h"
 
 // limpa a entrada de uma resposta errada
 void limparEntrada() {
@@ -26,13 +26,14 @@ void linha() {
     std::cout << "===============================" << std::endl;
 }
 
-// gera um numero aleatorio
+// gera um numero aleatorio entre min e max
 int randint(int min, int max) {
     static std::mt19937 gerador(std::random_device{}()); // Criado só na 1ª chamada
     std::uniform_int_distribution<int> distribuicao(min, max);
     return distribuicao(gerador);
 }
 
+// valida se a entrada está entre o min e o max
 int validarEscolha(int min, int max) {
     int escolha;
     while (true) {

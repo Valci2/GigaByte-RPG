@@ -1,7 +1,7 @@
 #pragma once
 #include "Personagem.h"
+#include "Combate.h"
 #include <vector>
-
 
 class Fases {
 public:

@@ -28,6 +28,10 @@ void Personagem::mostrarinventario() {
     std::cout << "Armadura: " << inventario.getArmadura() << std::endl;
 }
 
+void Personagem::subirDeNivel() {
+
+}
+
 void Personagem::usarPocaoDeCura() {
 
 }

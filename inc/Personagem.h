@@ -23,7 +23,7 @@ class Personagem {
         // metodos
         void status();
         void mostrarinventario();
-
+        void subirDeNivel();
 
         // metodos para usar itens
         void usarPocaoDeCura();

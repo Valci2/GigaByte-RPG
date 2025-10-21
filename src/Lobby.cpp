@@ -1,8 +1,27 @@
 #include "Lobby.h"
-#include "utilitarios.h"
+#include "Utilitarios.h"
 #include <iostream>
 
 Lobby::Lobby(Personagem &jogador) : jogador(jogador) {}
+
+void Lobby::iniciar() {
+    int escolha = 0;
+
+    do {
+        mostrarMenu();
+        std::cout << "Escolha: ";
+        std::cin >> escolha;
+
+        if (std::cin.fail()) {
+            limparEntrada();
+            std::cout << "nao tem um caminho em string" << std::endl;
+            delay(2);
+            continue;
+        }
+
+        processarEscolha(escolha);
+    } while (escolha != 9);
+}
 
 void Lobby::mostrarMenu() const {
     titulo("Lobby");
@@ -38,28 +57,9 @@ void Lobby::processarEscolha(int escolha) {
             delay(2);
             break;
         case 9:
-            break;
+            std::exit(1);
         default:
             std::cout << "Entrada inesperada, não coloquei ainda esse caminho!" << std::endl;
             delay(2);
     }
-}
-
-void Lobby::iniciar() {
-    int escolha = 0;
-
-    do {
-        mostrarMenu();
-        std::cout << "Escolha: ";
-        std::cin >> escolha;
-
-        if (std::cin.fail()) {
-            limparEntrada();
-            std::cout << "nao tem um caminho em string" << std::endl;
-            delay(2);
-            continue;
-        }
-
-        processarEscolha(escolha);
-    } while (escolha != 9);
 }

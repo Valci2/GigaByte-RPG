@@ -7,8 +7,9 @@
 // fazer a mecanica de combate
 // fazer a mecanica das fases
 // fazer as historias
+// talvez fazer o lobby gerenciar as historias
+// talvez colocar um gerenciador de combate que sera uma classe que vai ficar nas fases, ele que vai decidir o combate do jogo, deixando mais facil gerenciar o combate do jogo
 // adicinar comentarios?
-
 
 int main() {
 

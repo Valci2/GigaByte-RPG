@@ -17,12 +17,13 @@ file(GLOB_RECURSE SOURCES
         src/Fases.cpp
         src/INN.cpp
         src/Loja.cpp
-        src/utilitarios.cpp
+        src/Utilitarios.cpp
         src/Historia.cpp
         src/Lobby.cpp
         src/Personagem.cpp
         src/Itens.cpp
         src/Monstros/Monstro.cpp
+        src/Combate.cpp
         src/main.cpp
 )
 
