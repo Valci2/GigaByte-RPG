@@ -91,14 +91,16 @@ void Loja::menuDeItens(const std::vector<itensDeCompra> &itens, Personagem &joga
                        const std::string &tituloMenu, const std::string &tipo) {
     int escolha = 0;
     do {
+        // menu dos itens
         titulo(tituloMenu);
         for (size_t i = 0; i < itens.size(); i++) {
             const auto &item = itens[i];
-            std::cout << "[" << i + 1 << "] " << item.nome << " - Preco (" << item.preco << ")" << std::endl;
+            std::cout << "[" << i + 1 << "] " << item.nome << " - Preco " << item.preco << "Capibas" << std::endl;
         }
-
         std::cout << "[" << itens.size() + 1 << "] Voltar" << std::endl;
         std::cout << "Você possui " << jogador.getInventario().getCapiba() << " Capibas" << std::endl;
+
+        // escolha do jogador para poções
         escolha = validarEscolha(1, itens.size() + 1);
 
         if (escolha > 0 && escolha <= itens.size()) {
@@ -141,6 +143,7 @@ bool Loja::trocarItens(const std::vector<itensDeCompra> &itens, Personagem &joga
 
 // ====================== Compra de Poções ======================
 void Loja::comprarPocao(const std::vector<itensDeCompra> &pocoes, int escolha, Personagem &jogador, int quantidade) {
+
     const int LIMITE_DE_POCOES = 10;
     const auto &item = pocoes[escolha];
     std::string nomePocao = item.nome;

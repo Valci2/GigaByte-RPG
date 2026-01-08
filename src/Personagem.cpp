@@ -1,5 +1,6 @@
 #include "Personagem.h"
 #include <iostream>
+#include "Monstros/Monstro.h"
 
 // cosntrutor
 Personagem::Personagem(const std::string &nome) : nome(nome) {
@@ -28,7 +29,34 @@ void Personagem::mostrarinventario() {
     std::cout << "Armadura: " << inventario.getArmadura() << std::endl;
 }
 
+void Personagem::dormir() {
+    this->HP = maxHP;
+    this->mana = maxMana;
+}
+
 void Personagem::subirDeNivel() {
+
+}
+
+// combate
+void Personagem::atacar(Monstro& monstro) {
+
+}
+
+void Personagem::defender() {
+    this->defesa += defesa + 2;
+}
+
+void Personagem::tomarDano(int dano) {
+    HP -= dano;
+    if (HP == 0) { HP = 0; }
+}
+
+void Personagem::usar_magia() {
+
+}
+
+void Personagem::fugir() {
 
 }
 

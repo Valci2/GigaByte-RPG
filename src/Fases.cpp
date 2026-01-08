@@ -5,31 +5,33 @@
 // ====== Nome Das partes de cada fase ======
 // Partes da primeira fase
 std::vector<std::string> faseUm = {
-    {"Cache"},
-    {"RAM"},
-    {"ROM"}
+    {"Cripta da Memória"},
+    {"Labirinto dos Dados Perdidos"},
+    {"Santuário da RAM"}
 };
 
 // Partes da segunda fase
 std::vector<std::string> faseDois = {
-    {"Chipset"},
-    {"GPU"},
-    {"Bios"}
+    {"Caminho dos Barramentos"},
+    {"Circuito Sombrio"},
+    {"Caverna da BIOS"}
 };
 
 // Partes da terceira fase
 std::vector<std::string> faseTres = {
-    {"Unidade de Controle (UC)"},
-    {"Unidade Lógica e Aritmética (ULA)"},
-    {"Registradores"}
+    {"Trono da Lógica Binária"},
+    {"Torre da ULA"},
+    {"Domínio dos Registradores"}
 };
 
 // ========== Principal ==========
 void Fases::entrar(Personagem &jogador) {
     int escolha = 0;
+
     do {
         titulo("Fases");
         menuDeFases();
+
         escolha = validarEscolha(1, 4);
         int parte = 0;
         switch (escolha) {
@@ -37,6 +39,7 @@ void Fases::entrar(Personagem &jogador) {
                 titulo("Fase 1");
                 menuDasPartes(faseUm);
                 parte = validarEscolha(1, faseUm.size() + 1);
+                combate->gerenciamentoDeCombate(jogador, escolha, parte);
                 break;
             case 2:
                 titulo("Fase 2");

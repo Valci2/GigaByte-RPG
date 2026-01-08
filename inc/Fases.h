@@ -4,6 +4,8 @@
 #include <vector>
 
 class Fases {
+private:
+    Combate* combate;
 public:
     Fases() = default;
 

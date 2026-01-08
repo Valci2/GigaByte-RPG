@@ -168,10 +168,3 @@ Este projeto foi desenvolvido para **aprender C++ na prática**, aplicando:
 Projeto desenvolvido para estudos de **POO / EDOO**, com C++ e CMake.
 
 > “Um jogo dentro do PC, feito dentro do PC, que roda dentro do PC.” — *o dev, provavelmente.*
-<<<<<<< HEAD
-
----
-
-Quer que eu adicione uma seção final com **prints (simulados)** do terminal, mostrando o início do jogo com cores e layout estilo RPG de texto (exemplo visual dentro do README)? Isso deixa o repositório muito mais atrativo visualmente.
-=======
->>>>>>> 7cf6efd7591f3367513886957c089e8c2729662f

@@ -14,9 +14,10 @@ public:
     // menu da loja
     void menuDeCompras();
 
-    // menu das armas e a logica de troca das armas e armaduras
+    // menu das armas/armaduras e a logica de troca das armas/armaduras
     void menuDeItens(const std::vector<itensDeCompra> &itens, Personagem &jogador,
                      const std::string &tituloMenu, const std::string &tipo);
+
     bool trocarItens(const std::vector<itensDeCompra> &itens, Personagem &jogador, int escolha,
                      const std::string &tipo);
 

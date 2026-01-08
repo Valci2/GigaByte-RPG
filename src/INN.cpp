@@ -15,7 +15,7 @@ void INN::entrar(Personagem &jogador) {
             case 1:
                 std::cout << "Olha... ele dorme como um anjinho." << std::endl;
                 std::cout << "ZZZZZZZZZZZZ" << std::endl;
-                dormir(jogador);
+                jogador.dormir();
                 delay(2);
                 return;
             case 2:
@@ -24,9 +24,4 @@ void INN::entrar(Personagem &jogador) {
                 return;
         }
     }
-}
-
-void INN::dormir(Personagem &jogador) {
-    jogador.setHP(jogador.getMaxHP());
-    jogador.setMana(jogador.getMaxMana());
 }
