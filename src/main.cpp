@@ -19,6 +19,10 @@
 
 // personagem recebe o dano e a defesa lá na loja ou personagem recebe em invantario
 
+// colocar a magia
+// talvez refatorar a classe do combate
+//
+
 // remover:
 
 /* remover o personagem criado para teste da main

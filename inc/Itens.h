@@ -17,6 +17,7 @@ public:
 
     // metodos
     void adicionarPocao(const std::string &nome, int quantidade);
+
     // setter
     void setCapiba(int capiba);
     void setPocaoDeCura(int pocaoDeCura);

@@ -1,8 +1,8 @@
 #pragma once
-#include <string>
-class Personagem;
 
-class Monstro {
+#include <string>
+
+class Entidade {
 private:
     std::string nome;
     int HP;
@@ -16,13 +16,13 @@ private:
     bool defendendo = false;
 
 public:
-    Monstro(const std::string &nome, int maxHP, int maxMana, int forca, int inteligencia, int defesaBase);
-    virtual ~Monstro() = default;
+    Entidade(const std::string &nome, int maxHP, int maxMana, int forca, int inteligencia, int defesaBase);
+    virtual ~Entidade() = default;
 
     // combate
-    virtual void atacar(Personagem& jogador);
+    virtual void atacar(Entidade& alvo);
     virtual void defender();
-    virtual void magia(Personagem& jogador);
+    virtual void magia(Entidade& alvo);
     virtual void tomarDano(int dano);
     virtual void statusDeCombate();
     virtual void finalizarTurno();

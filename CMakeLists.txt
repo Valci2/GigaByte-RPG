@@ -28,4 +28,9 @@ file(GLOB_RECURSE SOURCES
 )
 
 # Cria o executável do seu programa, chamado RPG
-add_executable(RPG ${SOURCES})
+add_executable(RPG ${SOURCES}
+        inc/Tipos.h
+        src/Monstros/Boss.cpp
+        inc/Monstros/Boss.h
+        src/Entidade.cpp
+        inc/Entidade.h)

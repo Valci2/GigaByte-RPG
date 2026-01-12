@@ -1,5 +1,7 @@
 #include "Itens.h"
 
+#include <iostream>
+
 // construtor
 Itens::Itens() {}
 

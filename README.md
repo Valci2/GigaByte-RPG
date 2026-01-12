@@ -141,10 +141,7 @@ Dependendo da escolha, a história segue um rumo diferente — com muito humor e
 ## 💾 Próximas Expansões
 
 * 🧟 Sistema de inimigos e batalhas (Monstros)
-<<<<<<< HEAD
 * 💬 Diálogos com NPCs
-=======
->>>>>>> 7cf6efd7591f3367513886957c089e8c2729662f
 * 🧰 Sistema de inventário completo
 * 🎯 Sistema de habilidades (magias e golpes especiais)
 

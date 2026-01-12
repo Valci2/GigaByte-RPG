@@ -39,7 +39,7 @@ void Fases::entrar(Personagem &jogador) {
                 titulo("Fase 1");
                 menuDasPartes(faseUm);
                 parte = validarEscolha(1, faseUm.size() + 1);
-                combate->gerenciamentoDeCombate(jogador, escolha, parte);
+                combate->comecar(jogador, escolha, parte);
                 break;
             case 2:
                 titulo("Fase 2");

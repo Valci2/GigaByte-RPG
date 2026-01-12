@@ -2,6 +2,8 @@
 #include <string>
 
 #include "Itens.h"
+#include "Tipos.h"
+
 class Monstro;
 
 class Personagem {
@@ -14,7 +16,10 @@ private:
     int nivel = 1;
     int forca = 1;
     int inteligencia = 1;
-    int defesa = 0;
+    int defesaBase = 0;
+    int defesaBonus = 0;
+    int XP = 0;
+    bool defendendo = false;
     Itens inventario; // classe de atributo publico
 
 public:
@@ -26,19 +31,20 @@ public:
     void mostrarinventario();
     void subirDeNivel();
     void dormir();
+    void statusDeCombate();
+    void finalizarTurno();
 
     // combate
     void atacar(Monstro& monstro);
     void defender();
+    void magia();
     void usar_magia();
-    void fugir();
+    bool usarItem(TipoItem item);
+    bool usarPocao(int quantidade, int atual, void (Itens::*setter)(int), int& atributo, int maxAtributo, const std::string& nome);
+    bool fugir();
     void tomarDano(int dano);
-
-    // metodos para usar itens
-    void usarPocaoDeCura();
-    void usarPocaoDeCuraForte();
-    void usarPocaoDeMana();
-    void usarPocaoDeManaForte();
+    bool usarPocaoDeCura(int quantidade, int quantidadeDePoca, void (Itens::*setter)(int));
+    bool usarPocaoDeMana(int quantidade, int quantidadeDePocao, void (Itens::*setter)(int));
 
     // Getter
     const std::string &getNome();
@@ -50,6 +56,8 @@ public:
     int getForca();
     int getInteligencia();
     int getDefesa();
+    int getXP();
+    bool getDefendendo();
     Itens &getInventario();
 
     // Setter
@@ -62,4 +70,6 @@ public:
     void setForca(int forca);
     void setInteligencia(int inteligencia);
     void setDefesa(int defesa);
+    void setXP(int xp);
+    void setDefendendo(bool defendendo);
 };
