@@ -4,18 +4,18 @@
 #include "Utilitarios.h"
 
 // cosntrutor
-Personagem::Personagem(const std::string &nome) : nome(nome) {}
+Personagem::Personagem(const std::string& nome) : Entidade(nome, 10 , 4, 2, 3, 1, 0) {}
 
 // metodo
 void Personagem::status() {
     std::cout << "============= status =============" << std::endl;
-    std::cout << "Nome: " << nome << std::endl;
-    std::cout << "HP: " << HP << "/" << maxHP << std::endl;
-    std::cout << "Mana: " << mana << "/" << maxMana << std::endl;
+    std::cout << "Nome: " << getNome() << std::endl;
+    std::cout << "HP: " << getHP() << "/" << getMaxHP() << std::endl;
+    std::cout << "Mana: " << getMana() << "/" << getMaxMana() << std::endl;
     std::cout << "Nivel: " << nivel << std::endl;
-    std::cout << "Forca: " << forca << std::endl;
-    std::cout << "Inteligencia: " << inteligencia << std::endl;
-    std::cout << "Defesa: " << defesaBase << std::endl;
+    std::cout << "Forca: " << getForca() << std::endl;
+    std::cout << "Inteligencia: " << getInteligencia() << std::endl;
+    std::cout << "Defesa: " << getDefesa() << std::endl;
 }
 
 void Personagem::mostrarinventario() {
@@ -30,46 +30,40 @@ void Personagem::mostrarinventario() {
 }
 
 void Personagem::dormir() {
-    this->HP = maxHP;
-    this->mana = maxMana;
+    setHP(getMaxHP());
+    setMana(getMaxMana());
 }
 
-void Personagem::subirDeNivel() {
+// nivel do personagem
+void Personagem::ganharXP(int quantidade){
+    setXP(getXP() + quantidade);
 
+    // verifica se atingiu o limite para subir de nível
+    int limite = nivel * 10; // exemplo: cada nível precisa de 100 * nivel XP
+    if (XP >= limite) subirDeNivel(limite);
 }
 
-// combate
-void Personagem::atacar(Monstro& monstro) {
-    int dano = static_cast<int> (this->forca * 1.4 + this->inteligencia * 0.5);
-    std::cout << nome << " deu " << dano << " de dano" << std::endl;
-    monstro.tomarDano(dano);
-}
+void Personagem::subirDeNivel(int limite) {
 
-void Personagem::defender() {
-    if (defendendo) return;
+    int excedente = getXP() - limite;
+    setXP(excedente);
+    nivel++;
 
-    std::cout << nome << " se defende" << std::endl;
-    this->defendendo = true;
-    this->defesaBonus = static_cast<int>(nivel * 0.5);
-}
+    // aumento de atributos
+    setMaxHP(getMaxHP() + 3);
+    setMaxMana(getMaxMana() + 2);
+    setForca(getForca() + 1);
+    setInteligencia(getInteligencia() + 1);
+    setDefesaBase(getDefesa() + 1);
 
-void Personagem::finalizarTurno() {
-    defendendo = false;
-    defesaBonus = 0;
-}
-
-void Personagem::tomarDano(int dano) {
-    int danoTotal = dano - getDefesa();
-    if (danoTotal <= 0) danoTotal = 1;
-    HP -= danoTotal;
-    if (HP <= 0) { HP = 0; }
+    // recupera vida e mana
+    setHP(getMaxHP());
+    setMana(getMaxMana());
 }
 
 void Personagem::magia() {}
 
-void Personagem::usar_magia() {
-
-}
+void Personagem::usar_magia() {}
 
 bool Personagem::fugir() {
     int chance = randint(1, 100);
@@ -77,18 +71,12 @@ bool Personagem::fugir() {
     return false;
 }
 
-void Personagem::statusDeCombate() {
-    std::cout << "========= " << nome << " =========" << std::endl;
-    std::cout << "HP: " << this->HP << std::endl;
-    std::cout << "Mana: " << this->mana << std::endl;
-}
-
 bool Personagem::usarItem(TipoItem tipo) {
     switch (tipo) {
-    case TipoItem::PocaoCura: return usarPocao(20, inventario.getPocaoDeCura(), &Itens::setPocaoDeCura, HP, maxHP, "Pocao de Cura");
-    case TipoItem::PocaoCuraForte: return usarPocao(50, inventario.getPocaoDeCuraForte(), &Itens::setPocaoDeCuraForte, HP, maxHP, "Pocao de cura forte");
-    case TipoItem::PocaoMana: return usarPocao(20, inventario.getPocaoDeMana(), &Itens::setPocaoDeMana, mana, maxMana, "Pocao de Mana");
-    case TipoItem::PocaoManaForte: return usarPocao(50, inventario.getPocaoDeManaForte(), &Itens::setPocaoDeManaForte, mana, maxMana, "pocao de mana forte");
+    case TipoItem::PocaoCura: return usarPocao(20, inventario.getPocaoDeCura(), &Itens::setPocaoDeCura, getHP(), getMaxHP(), "Pocao de Cura");
+    case TipoItem::PocaoCuraForte: return usarPocao(50, inventario.getPocaoDeCuraForte(), &Itens::setPocaoDeCuraForte, getHP(), getMaxHP(), "Pocao de cura forte");
+    case TipoItem::PocaoMana: return usarPocao(20, inventario.getPocaoDeMana(), &Itens::setPocaoDeMana, getMana(), getMaxMana(), "Pocao de Mana");
+    case TipoItem::PocaoManaForte: return usarPocao(50, inventario.getPocaoDeManaForte(), &Itens::setPocaoDeManaForte, getMana(), getMaxMana(), "pocao de mana forte");
     }
     return false;
 }
@@ -105,28 +93,10 @@ bool Personagem::usarPocao(int quantidade, int atual, void (Itens::*setter)(int)
 }
 
 // getter
-const std::string &Personagem::getNome() { return nome; }
-int Personagem::getHP() { return HP; }
-int Personagem::getMaxHP() { return maxHP; }
-int Personagem::getMana() { return mana; }
-int Personagem::getMaxMana() { return maxMana; }
 int Personagem::getNivel() { return nivel; }
-int Personagem::getForca() { return forca; }
-int Personagem::getInteligencia() { return inteligencia; }
-int Personagem::getDefesa() { return defesaBase + defesaBonus; }
 int Personagem::getXP() { return XP; }
-bool Personagem::getDefendendo(){ return defendendo; }
 Itens &Personagem::getInventario() { return inventario; }
 
 // setter
-void Personagem::setNome(const std::string &nome) { this->nome = nome; }
-void Personagem::setHP(int HP) { this->HP = HP; }
-void Personagem::setMaxHP(int maxHP) { this->maxHP = maxHP; }
-void Personagem::setMana(int mana) { this->mana = mana; }
-void Personagem::setMaxMana(int maxMana) { this->maxMana = maxMana; }
 void Personagem::setNivel(int nivel) { this->nivel = nivel; }
-void Personagem::setForca(int forca) { this->forca = forca; }
-void Personagem::setInteligencia(int inteligencia) { this->inteligencia = inteligencia; }
-void Personagem::setDefesa(int defesa) { this->defesaBase = defesa; }
 void Personagem::setXP(int xp) { this->XP = xp; }
-void Personagem::setDefendendo(bool defendendo) { this->defendendo = defendendo; }

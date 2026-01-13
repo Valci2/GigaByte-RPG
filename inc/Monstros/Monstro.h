@@ -1,51 +1,10 @@
 #pragma once
 #include <string>
-class Personagem;
 
-class Monstro {
-private:
-    std::string nome;
-    int HP;
-    int maxHP;
-    int mana;
-    int maxMana;
-    int forca;
-    int inteligencia;
-    int defesaBase;
-    int defesaBonus;
-    bool defendendo = false;
+#include "Entidade.h"
 
+class Monstro : public Entidade {
 public:
-    Monstro(const std::string &nome, int maxHP, int maxMana, int forca, int inteligencia, int defesaBase);
+    Monstro(const std::string &nome, int maxHP, int maxMana, int forca, int inteligencia, int defesaBase, int XP);
     virtual ~Monstro() = default;
-
-    // combate
-    virtual void atacar(Personagem& jogador);
-    virtual void defender();
-    virtual void magia(Personagem& jogador);
-    virtual void tomarDano(int dano);
-    virtual void statusDeCombate();
-    virtual void finalizarTurno();
-
-    // getters
-    std::string getNome();
-    int getHP();
-    int getMaxHP();
-    int getMana();
-    int getMaxMana();
-    int getForce();
-    int getInteligencia();
-    int getDefesa();
-    bool getDefendendo();
-
-    // setters
-    void setNome(const std::string &nome);
-    void setMaxHP(int maxHP);
-    void setHP(int HP);
-    void setMaxMana(int maxMana);
-    void setMana(int mana);
-    void setForce(int force);
-    void setInteligencia(int inteligencia);
-    void setDefesaBase(int defesaBase);
-    void setDefendendo(bool defendendo);
 };
