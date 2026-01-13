@@ -29,17 +29,17 @@ public:
     virtual void finalizarTurno();
 
     // getters
-    std::string& getNome();
-    int& getHP();
-    int& getMaxHP();
-    int& getMana();
-    int& getMaxMana();
-    int& getForca();
-    int& getInteligencia();
-    int& getDefesaBase();
-    int getDefesa();
-    int& getXP();
-    bool& getDefendendo();
+    const std::string& getNome() const;
+    int getHP() const;
+    int getMaxHP() const;
+    int getMana() const;
+    int getMaxMana() const;
+    int getForca() const;
+    int getInteligencia() const;
+    int getDefesaBase() const;
+    int getDefesa() const;
+    int getXP() const;
+    bool getDefendendo() const;
 
     // setters
     void setNome(const std::string &nome);

@@ -29,6 +29,11 @@ void Fases::entrar(Personagem &jogador) {
     int escolha = 0;
 
     do {
+        if (jogador.getHP() <= 0)
+        {
+            std::cout << "Voce nao tem vida para tentar encarar as fases, va se curar no inn." << std::endl;
+            return;
+        }
         titulo("Fases");
         menuDeFases();
 
@@ -39,18 +44,29 @@ void Fases::entrar(Personagem &jogador) {
                 titulo("Fase 1");
                 menuDasPartes(faseUm);
                 parte = validarEscolha(1, faseUm.size() + 1);
+            if (parte < faseUm.size() + 1)
+            {
                 combate->comecar(jogador, escolha, parte);
-                break;
+            }
+            break;
             case 2:
                 titulo("Fase 2");
                 menuDasPartes(faseDois);
                 parte = validarEscolha(1, faseDois.size() + 1);
-                break;
+            if (parte < faseDois.size() + 1)
+            {
+                combate->comecar(jogador, escolha, parte);
+            }
+            break;
             case 3:
                 titulo("Fase 3");
                 menuDasPartes(faseTres);
                 parte = validarEscolha(1, faseTres.size() + 1);
-                break;
+            if (parte < faseTres.size() + 1)
+            {
+                combate->comecar(jogador, escolha, parte);
+            }
+            break;
         }
     } while (escolha != 4);
 }

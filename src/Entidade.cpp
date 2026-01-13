@@ -51,17 +51,17 @@ void Entidade::statusDeCombate() {
 }
 
 // getters
-std::string& Entidade::getNome() { return this->nome; }
-int& Entidade::getHP() { return this->HP; }
-int& Entidade::getMaxHP() { return this->maxHP; }
-int& Entidade::getMana() { return this->mana; }
-int& Entidade::getMaxMana() { return this->maxMana; }
-int& Entidade::getForca() { return this->forca; }
-int& Entidade::getInteligencia() { return this->inteligencia; }
-int& Entidade::getDefesaBase() { return this->defesaBase; }
-int Entidade::getDefesa() { return this->defesaBase + defesaBonus; }
-int& Entidade::getXP() { return this->XP; }
-bool& Entidade::getDefendendo() { return this->defendendo; }
+const std::string& Entidade::getNome() const { return this->nome; }
+int Entidade::getHP() const { return this->HP; }
+int Entidade::getMaxHP() const { return this->maxHP; }
+int Entidade::getMana() const { return this->mana; }
+int Entidade::getMaxMana() const { return this->maxMana; }
+int Entidade::getForca() const { return this->forca; }
+int Entidade::getInteligencia() const { return this->inteligencia; }
+int Entidade::getDefesaBase() const { return this->defesaBase; }
+int Entidade::getDefesa() const { return this->defesaBase + defesaBonus; }
+int Entidade::getXP() const { return this->XP; }
+bool Entidade::getDefendendo() const { return this->defendendo; }
 
 // setters
 void Entidade::setNome(const std::string &nome) { this->nome = nome; }

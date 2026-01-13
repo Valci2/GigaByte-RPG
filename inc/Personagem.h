@@ -5,6 +5,11 @@
 #include "Itens.h"
 #include "Tipos.h"
 
+enum class TipoAtributo {
+    HP,
+    Mana
+};
+
 class Personagem : public Entidade {
 private:
     int nivel = 1;
@@ -19,14 +24,14 @@ public:
     void status();
     void mostrarinventario();
     void subirDeNivel(int limite);
-    void ganharXP(int quantidade);
+    bool ganharXP(int quantidade);
     void dormir();
 
     // combate
     void magia();
     void usar_magia();
     bool usarItem(TipoItem item);
-    bool usarPocao(int quantidade, int atual, void (Itens::*setter)(int), int& atributo, int maxAtributo, const std::string& nome);
+    bool usarPocao(int quantidade, int atual,Entidade& alvo, TipoAtributo tipo);
     bool fugir();
 
     // Getter

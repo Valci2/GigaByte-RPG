@@ -2,13 +2,7 @@
 #include "Historia.h"
 #include "Lobby.h"
 
-// fazer a mecanica de combate
-// fazer a mecanica das fases
-
 // colocar defesa das armaduras e ataque das armas
-
-// colocar a mecanica do uso de pocoes, dava pra colocar atraves de uma função que identifica o tipo de poção que ele quer usar e usar aquele pocao, com uma mecanica de validação facil
-// fazer os monstros, fazer uma classe monstro que vai ter ser a classe pai
 
 // fazer as historias
 // talvez fazer o lobby gerenciar as historias
@@ -21,7 +15,12 @@
 
 // colocar a magia
 // talvez refatorar a classe do combate
-//
+
+/*
+ *
+ *
+ *
+ */
 
 // remover:
 

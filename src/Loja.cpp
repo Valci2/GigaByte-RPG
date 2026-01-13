@@ -95,7 +95,7 @@ void Loja::menuDeItens(const std::vector<itensDeCompra> &itens, Personagem &joga
         titulo(tituloMenu);
         for (size_t i = 0; i < itens.size(); i++) {
             const auto &item = itens[i];
-            std::cout << "[" << i + 1 << "] " << item.nome << " - Preco " << item.preco << "Capibas" << std::endl;
+            std::cout << "[" << i + 1 << "] " << item.nome << " - Preco " << item.preco << " Capibas" << std::endl;
         }
         std::cout << "[" << itens.size() + 1 << "] Voltar" << std::endl;
         std::cout << "Você possui " << jogador.getInventario().getCapiba() << " Capibas" << std::endl;

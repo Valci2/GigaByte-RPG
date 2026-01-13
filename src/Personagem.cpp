@@ -35,12 +35,13 @@ void Personagem::dormir() {
 }
 
 // nivel do personagem
-void Personagem::ganharXP(int quantidade){
+bool Personagem::ganharXP(int quantidade){
     setXP(getXP() + quantidade);
 
     // verifica se atingiu o limite para subir de nível
     int limite = nivel * 10; // exemplo: cada nível precisa de 100 * nivel XP
-    if (XP >= limite) subirDeNivel(limite);
+    if (XP >= limite) { subirDeNivel(limite); return true; }
+    return false;
 }
 
 void Personagem::subirDeNivel(int limite) {
@@ -73,22 +74,57 @@ bool Personagem::fugir() {
 
 bool Personagem::usarItem(TipoItem tipo) {
     switch (tipo) {
-    case TipoItem::PocaoCura: return usarPocao(20, inventario.getPocaoDeCura(), &Itens::setPocaoDeCura, getHP(), getMaxHP(), "Pocao de Cura");
-    case TipoItem::PocaoCuraForte: return usarPocao(50, inventario.getPocaoDeCuraForte(), &Itens::setPocaoDeCuraForte, getHP(), getMaxHP(), "Pocao de cura forte");
-    case TipoItem::PocaoMana: return usarPocao(20, inventario.getPocaoDeMana(), &Itens::setPocaoDeMana, getMana(), getMaxMana(), "Pocao de Mana");
-    case TipoItem::PocaoManaForte: return usarPocao(50, inventario.getPocaoDeManaForte(), &Itens::setPocaoDeManaForte, getMana(), getMaxMana(), "pocao de mana forte");
+    case TipoItem::PocaoCura:
+        return usarPocao(20, inventario.getPocaoDeCura(), *this, TipoAtributo::HP);
+
+    case TipoItem::PocaoCuraForte:
+        return usarPocao(50, inventario.getPocaoDeCuraForte(), *this, TipoAtributo::HP);
+
+    case TipoItem::PocaoMana:
+        return usarPocao(20, inventario.getPocaoDeMana(), *this, TipoAtributo::Mana);
+
+    case TipoItem::PocaoManaForte:
+        return usarPocao(50, inventario.getPocaoDeManaForte(), *this, TipoAtributo::Mana);
     }
     return false;
 }
 
-bool Personagem::usarPocao(int quantidade, int atual, void (Itens::*setter)(int), int& atributo, int maxAtributo, const std::string& nome) {
+
+bool Personagem::usarPocao(int quantidade, int atual, Entidade& alvo, TipoAtributo tipo) {
+
     if (atual <= 0) return false;
-    if (atributo >= maxAtributo) return false;
 
-    atributo += quantidade;
-    if (atributo >= maxAtributo) atributo = maxAtributo;
+    if (tipo == TipoAtributo::HP)
+    {
+        if (alvo.getHP() >= alvo.getMaxHP())
+            return false;
 
-    (inventario.*setter)(atual - 1);
+        int novoHP = alvo.getHP() + quantidade;
+        if (novoHP > alvo.getMaxHP())
+            novoHP = alvo.getMaxHP();
+
+        alvo.setHP(novoHP);
+
+    }
+    else 
+    { // Mana
+        if (alvo.getMana() >= alvo.getMaxMana())
+            return false;
+
+        int novaMana = alvo.getMana() + quantidade;
+        if (novaMana > alvo.getMaxMana())
+            novaMana = alvo.getMaxMana();
+
+        alvo.setMana(novaMana);
+    }
+
+    // consome a poção
+    if (tipo == TipoAtributo::HP) {
+        inventario.setPocaoDeCura(atual - 1);
+    } else {
+        inventario.setPocaoDeMana(atual - 1);
+    }
+
     return true;
 }
 
