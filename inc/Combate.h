@@ -1,16 +1,30 @@
 #pragma once
+
 #include "Monstro.h"
 #include "Personagem.h"
-#include <vector>
+#include "FabricaDeMonstros.h"
+
+// enum para organização do switch
+enum Acao {
+    Atacar = 1,
+    Defender,
+    Magia,
+    Item,
+    Fugir
+};
 
 class Combate {
+private:
+    FabricaDeMonstros fabricaDeMonstros;
 public:
     Combate();
     ~Combate();
 
     void comecar(Personagem& jogador, int fase, int parte);
-    void gerenciamentoDeMonstro(Personagem& jogador, std::vector<Monstro>& monstros, int parte);
     void iniciarCombate(Personagem& jogador, Monstro monstro);
+    bool turnoDoJogador(Personagem& jogador, Monstro& monstro);
+    void turnoDoMonstro(Personagem& jogador, Monstro& monstro);
+    void fimDeCombate(Personagem &jogador, Monstro &monstro);
 };
 
 

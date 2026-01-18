@@ -14,6 +14,7 @@ class Personagem : public Entidade {
 private:
     int nivel = 1;
     int XP = 0;
+    int falta = 0;
     Itens inventario; // classe de atributo publico
 
 public:
@@ -37,6 +38,7 @@ public:
     // Getter
     int getNivel();
     int getXP();
+    int getFalta();
     Itens &getInventario();
 
     // Setter

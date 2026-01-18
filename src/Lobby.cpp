@@ -4,6 +4,16 @@
 
 Lobby::Lobby(Personagem &jogador) : jogador(jogador) {}
 
+enum acoes
+{
+    Fases = 1,
+    Loja,
+    Inn,
+    Status,
+    Inventario,
+    Sair = 9
+};
+
 void Lobby::iniciar() {
     int escolha = 0;
 
@@ -35,28 +45,28 @@ void Lobby::mostrarMenu() const {
 
 void Lobby::processarEscolha(int escolha) {
     switch (escolha) {
-        case 1:
+        case Fases:
             fases.entrar(jogador);
             break;
-        case 2:
+        case Loja:
             std::cout << "Caminhando até a Loja" << std::endl;
             delay(1);
             loja.entrar(jogador);
             break;
-        case 3:
+        case Inn:
             std::cout << "Caminhando até o INN" << std::endl;
             delay(1);
             inn.entrar(jogador);
             break;
-        case 4:
+        case Status:
             jogador.status();
             delay(2);
             break;
-        case 5:
+        case Inventario:
             jogador.mostrarinventario();
             delay(2);
             break;
-        case 9:
+        case Sair:
             std::exit(1);
         default:
             std::cout << "Entrada inesperada, não coloquei ainda esse caminho!" << std::endl;

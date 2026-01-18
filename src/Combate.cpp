@@ -1,48 +1,24 @@
 #include "Combate.h"
 #include "Utilitarios.h"
 #include "Tipos.h"
+#include "FabricaDeMonstros.h"
+
 #include <iostream>
-#include <vector>
+#include <iomanip> // para setw
 
 Combate::Combate() {}
 Combate::~Combate() {}
 
-// listas de monstros generica da primeira fase
-std::vector<Monstro> monstrosFaseUm = {
-    Monstro("Cache Fantasma", 5, 3, 1, 2, 1, randint(1, 3), randint(1, 3)),
-    Monstro("Bit Perdido", 6, 9, 2, 3, 1, randint(1, 4), randint(1, 4)),
-    Monstro("Pixel Morto", 10, 10, 4, 7,  3, randint(2, 5), randint(2, 5)),
-    Monstro("Pacote Malicioso", 14, 8, 6, 7, 4, randint(2, 6), randint(2, 6)),
-    Monstro("Memória Corrompida", 25, 20, 11, 4, 8, randint(10,20), randint(10, 20))
-};
-
-// listas de monstros generica da segunda fase
-std::vector<Monstro> monstrosFaseDois = {
-    Monstro("Chipset Sombrio", 20, 15, 10, 9, 10, randint(20, 30), randint(20, 30)),
-    Monstro("Barramento Caótico", 23, 16, 10, 10, 9, randint(30, 50), randint(30, 50)),
-    Monstro("Slot Vazio", 25, 20, 10, 10, 14, randint(40, 50), randint(40, 50)),
-    Monstro("BIOS Antiga", 25, 23, 12, 12, 11, randint(40, 70), randint(40, 70)),
-    Monstro("Conector Enferrujado", 35, 30, 14, 15, 16, randint(100, 150), randint(100, 150))
-};
-
-// listas de monstros generica da terceira fase
-std::vector<Monstro> monstrosFaseTres = {
-    Monstro("Thread Caótica", 30, 12, 13, 18, 15, randint(80, 160), randint(80, 160)),
-    Monstro("Segmentation Fault", 32, 12, 14, 18, 16, randint(100, 160), randint(100, 160)),
-    Monstro("Overclock Insano", 36, 13, 15, 20, 17, randint(150, 250), randint(150, 250)),
-    Monstro("Pipeline Quebrado", 40, 11, 16, 25, 16, randint(200, 350), randint(200, 350)),
-    Monstro("Deadlock", 60, 50, 20, 40, 20, randint(400, 600), randint(400, 600))
-};
-
+// ====================== menus ======================
 // menu de escolhas para o combate
 void menu() {
-    std::cout << "+--------------+" << std::endl;
-    std::cout << "| [1] Atacar   |" << std::endl;
-    std::cout << "| [2] Defender |" << std::endl;
-    std::cout << "| [3] Magia    |" << std::endl;
-    std::cout << "| [4] Item     |" << std::endl;
-    std::cout << "| [5] Fugir    |" << std::endl;
-    std::cout << "+--------------+" << std::endl;
+    std::cout << "+-- Seu Turno --+" << std::endl;
+    std::cout << "| [1] Atacar    |" << std::endl;
+    std::cout << "| [2] Defender  |" << std::endl;
+    std::cout << "| [3] Magia     |" << std::endl;
+    std::cout << "| [4] Item      |" << std::endl;
+    std::cout << "| [5] Fugir     |" << std::endl;
+    std::cout << "+---------------+" << std::endl;
 }
 
 void menuItens(Personagem &jogador) {
@@ -54,99 +30,88 @@ void menuItens(Personagem &jogador) {
     std::cout << "[5] Voltar""\n";
 }
 
-std::vector<std::string> magias = {
-    "Tela-preta",
-    "Golpe de agua",
-};
 
-void menuDeMagias()
+void statusDeCombate(Personagem &jogador, Monstro &monstro)
 {
+    const int col = 26;
 
+    std::cout << "+--------------------------+--------------------------+\n";
+
+    std::cout << "| " << std::left << std::setw(col - 1) << jogador.getNome()
+              << "| " << std::left << std::setw(col - 1) << monstro.getNome() << "|\n";
+
+    std::cout << "+--------------------------+--------------------------+\n";
+
+    std::cout << "| HP   "
+              << std::right << std::setw(3) << jogador.getHP()
+              << "/" << std::setw(3) << jogador.getMaxHP()
+              << std::left << std::setw(col - 13) << " "
+              << "| HP   "
+              << std::right << std::setw(3) << monstro.getHP()
+              << "/" << std::setw(3) << monstro.getMaxHP()
+              << std::left << std::setw(col - 13) << " "
+              << "|\n";
+
+    std::cout << "| Mana "
+              << std::right << std::setw(3) << jogador.getMana()
+              << "/" << std::setw(3) << jogador.getMaxMana()
+              << std::left << std::setw(col - 13) << " "
+              << "| Mana "
+              << std::right << std::setw(3) << monstro.getMana()
+              << "/" << std::setw(3) << monstro.getMaxMana()
+              << std::left << std::setw(col - 13) << " "
+              << "|\n";
+
+    std::cout << "+--------------------------+--------------------------+\n";
 }
 
-enum Acao {
-    Atacar = 1,
-    Defender,
-    Magia,
-    Item,
-    Fugir
-};
-
+// ===================== começa o combate =====================
+// faz a escolha do monstro dependendo da fase e da parte
 void Combate::comecar(Personagem &jogador, int fase, int parte) {
-    if (fase == 1) {
-        gerenciamentoDeMonstro(jogador, monstrosFaseUm, parte);
-    }
-    else if (fase == 2) {
-        gerenciamentoDeMonstro(jogador, monstrosFaseDois, parte);
-    }
-    else if (fase == 3) {
-        gerenciamentoDeMonstro(jogador, monstrosFaseTres, parte);
-    }
-}
-
-void Combate::gerenciamentoDeMonstro(Personagem& jogador, std::vector<Monstro>& monstros, int parte) {
-
-    int indice;
-
-    if (parte == 1) {
-        indice = randint(0, monstros.size() - 4);
-    }
-    else if (parte == 2) {
-        indice = randint(0, monstros.size() - 2);
-    }
-    else {
-        indice = monstros.size() - 1;
-    }
-
-    Monstro& atacante = monstros[indice];
-
+    Monstro atacante = fabricaDeMonstros.fabricar(fase, parte);
     std::cout << "parece que você foi avistado pelo " << atacante.getNome() << std::endl;
     iniciarCombate(jogador, atacante);
 }
 
-void Combate::iniciarCombate(Personagem& jogador, Monstro monstro) {
-
-    // Variaveis do combate
-    int escolha = 0;
-    int escolhaDoMonstro = 0;
-    int turnos = 1;
+// ===================== turnos =====================
+bool Combate::turnoDoJogador(Personagem &jogador, Monstro &monstro)
+{
     int dano = 0;
+    int escolha = 0;
     bool fugiu = false;
 
-    // Combate
-    while (jogador.getHP() > 0 && monstro.getHP() > 0 && !fugiu) {
+    while (true) {
+        menu();
+        escolha = validarEscolha(1, 5);
 
-        std::cout << "========= " << turnos << "⁰ turno" << " ========="<< std::endl;
-        jogador.statusDeCombate();
-        monstro.statusDeCombate();
-
-        bool turnoValido = false;
-        while (!turnoValido) {
-            menu();
-            escolha = validarEscolha(1, 5);
-
-            switch (escolha) {
-                case Atacar:
+        switch (escolha) {
+            case Atacar:
+                {
+                    dano = jogador.atacar(monstro);
+                    std::cout << jogador.getNome() << " atacou e causou " << dano << " de dano ao " << monstro.getNome() << std::endl;
+                    return false;
+                }
+            case Defender:
+                {
+                    jogador.defender();
+                    std::cout << jogador.getNome() << " se defende" << std::endl;
+                    return false;
+                }
+            case Magia:
+                {
+                    jogador.magia();
+                    bool sucesso = false;
+                    if (!sucesso)
                     {
-                        dano = jogador.atacar(monstro);
-                        std::cout << jogador.getNome() << " deu " << dano << " de dano ao " << monstro.getNome() << std::endl;
-                        turnoValido = true;
-                        break;
+                        std::cout << "Voce nao conseguiu usar a magia" << std::endl;
                     }
-                case Defender:
+                    else
                     {
-                        jogador.defender();
-                        std::cout << jogador.getNome() << " se defende" << std::endl;
-                        turnoValido = true;
-                        break;
+                        return false;
                     }
-                case Magia:
-                    {
-                        jogador.magia();
-                        turnoValido = true;
-                        break;
-                    }
-                case Item: {
+                    break;
+                }
+            case Item: {
                     menuItens(jogador);
 
                     int escolhaItem = validarEscolha(1, 5);
@@ -157,50 +122,81 @@ void Combate::iniciarCombate(Personagem& jogador, Monstro monstro) {
                     if (!sucesso) {
                         std::cout << "voce nao conseguiu usar a pocao" << std::endl;
                     } else {
-                        turnoValido = true;
+                        return false;
                     }
                     break;
-                }
-                case Fugir: fugiu = jogador.fugir(); turnoValido = true; break;
             }
+            case Fugir:
+                fugiu = jogador.fugir();
+                return fugiu;
         }
+    }
+}
+
+void Combate::turnoDoMonstro(Personagem &jogador, Monstro &monstro)
+{
+    if (randint(1, 100) <= 80) {
+        std::cout << monstro.getNome() << " atacou e causou " << monstro.atacar(jogador) << " de dano\n";
+    } else {
+        monstro.defender();
+        std::cout << monstro.getNome() << " se defende\n";
+    }
+}
+// ============================================================
+
+// ==================== Logica do Combate =====================
+void Combate::iniciarCombate(Personagem &jogador, Monstro monstro)
+{
+    // Variaveis do combate
+    int turnos = 1;
+    bool fugiu = false;
+
+    // Combate
+    do  {
+        std::cout << "============= " << turnos << "⁰ turno" << " ============="<< std::endl;
+
+        statusDeCombate(jogador, monstro);
+
+        fugiu = turnoDoJogador(jogador, monstro);
+        monstro.finalizarTurno();
 
         if (jogador.getHP() > 0 && monstro.getHP() > 0 && !fugiu) {
-
-            monstro.finalizarTurno();
-
-            escolhaDoMonstro = randint(1, 100);
-            if (escolhaDoMonstro <= 80) {
-                dano = monstro.atacar(jogador);
-                std::cout << monstro.getNome() << " deu " << dano << " de dano ao " << jogador.getNome() << std::endl;
-
-            }
-            else {
-                monstro.defender();
-                std::cout << monstro.getNome() << " se defende" << std::endl;
-            }
-
+            turnoDoMonstro(jogador, monstro);
             jogador.finalizarTurno();
-            turnos++;
         }
-    }
 
-    bool upou = false;
+        turnos++;
+    } while (jogador.estaVivo() && monstro.estaVivo() && !fugiu);
+
     // Fim do combate
-    if (jogador.getHP() > 0 && !fugiu)
+    if (jogador.estaVivo() && !fugiu)
     {
-        linha();
-        std::cout << "Parabens voce ganhou a batalha" << std::endl;
-
-        std::cout << jogador.getNome() << " ganhou: " << monstro.getXP() << " XP" << std::endl;
-        std::cout << jogador.getNome() << " ganhou: " << monstro.getCapibas() << " Capibas" << std::endl;
-        jogador.getInventario().setCapiba(monstro.getCapibas());
-        upou = jogador.ganharXP(monstro.getXP());
-
-        if (upou) {
-            std::cout << "voce subiu de nivel" << std::endl;
-            jogador.status();
-        }
+        fimDeCombate(jogador, monstro);
     }
-    else { std::cout << jogador.getNome() << " tankou mais dano do que podia e acabou morrendo" << std::endl; }
+    else
+    {
+        std::cout << jogador.getNome() << " tankou mais dano do que podia e acabou morrendo" << std::endl;
+    }
+}
+
+// =================== Final do combate ===================
+void Combate::fimDeCombate(Personagem& jogador, Monstro& monstro)
+{
+    bool upou = false;
+    std::cout << "========= " << "Parabens voce derrotou o " << monstro.getNome() << " =========" << std::endl;
+
+    jogador.getInventario().setCapiba(jogador.getInventario().getCapiba() + monstro.getCapibas());
+    upou = jogador.ganharXP(monstro.getXP());
+
+    if (!upou){
+        std::cout << jogador.getNome() << " Ganhou: " << monstro.getXP() << " XP, para evoluir falta " << jogador.getFalta() << " XP" << std::endl;
+        std::cout << jogador.getNome() << " ganhou: " << monstro.getCapibas() << " Capibas" << std::endl;
+    }
+    else {
+        std::cout << jogador.getNome() << " Ganhou: " << monstro.getXP() << " XP" << std::endl;
+        std::cout << jogador.getNome() << " ganhou: " << monstro.getCapibas() << " Capibas" << std::endl;
+        std::cout << "Voce subiu de nivel" << std::endl;
+        jogador.status();
+    }
+
 }

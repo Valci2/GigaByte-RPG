@@ -44,10 +44,11 @@ int Entidade::tomarDano(int dano) {
     return dano;
 }
 
-void Entidade::statusDeCombate() {
-    std::cout << "========= " << nome << " =========" << std::endl;
-    std::cout << "HP: " << this->HP << std::endl;
-    std::cout << "Mana: " << this->mana << std::endl;
+
+
+bool Entidade::estaVivo()
+{
+    return HP > 0;
 }
 
 // getters

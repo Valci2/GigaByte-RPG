@@ -25,8 +25,8 @@ public:
     virtual void defender();
     virtual void magia(Entidade& alvo);
     virtual int tomarDano(int dano);
-    virtual void statusDeCombate();
     virtual void finalizarTurno();
+    virtual bool estaVivo();
 
     // getters
     const std::string& getNome() const;

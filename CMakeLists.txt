@@ -33,4 +33,6 @@ add_executable(RPG ${SOURCES}
         src/Monstros/Boss.cpp
         inc/Monstros/Boss.h
         src/Entidade.cpp
-        inc/Entidade.h)
+        inc/Entidade.h
+        src/Monstros/FabricaDeMonstros.cpp
+        inc/Monstros/FabricaDeMonstros.h)

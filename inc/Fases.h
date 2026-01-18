@@ -10,6 +10,6 @@ public:
     Fases() = default;
 
     void entrar(Personagem &jogador);
-    void menuDeFases();
+    void menuDasFases();
     void menuDasPartes(const std::vector<std::string> &fases);
 };

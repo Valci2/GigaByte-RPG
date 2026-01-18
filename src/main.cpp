@@ -2,25 +2,18 @@
 #include "Historia.h"
 #include "Lobby.h"
 
+// personagem recebe o dano e a defesa lá na loja ou personagem recebe em invantario
 // colocar defesa das armaduras e ataque das armas
+// colocar um sistema pra trocar a armadura e a arma se o jogador quiser
+// talvez ajustar melhor os atributos
 
 // fazer as historias
 // talvez fazer o lobby gerenciar as historias
 
-// talvez colocar um gerenciador de combate que sera uma classe que vai ficar nas fases, ele que vai decidir o combate do jogo, deixando mais facil gerenciar o combate do jogo
+// fazer as magias e o sistema de magias 
+
 
 // adicinar comentarios?
-
-// personagem recebe o dano e a defesa lá na loja ou personagem recebe em invantario
-
-// colocar a magia
-// talvez refatorar a classe do combate
-
-/*
- *
- *
- *
- */
 
 // remover:
 

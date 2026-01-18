@@ -16,6 +16,7 @@ void Personagem::status() {
     std::cout << "Forca: " << getForca() << std::endl;
     std::cout << "Inteligencia: " << getInteligencia() << std::endl;
     std::cout << "Defesa: " << getDefesa() << std::endl;
+    std::cout << "XP: " << getXP() << std::endl;
 }
 
 void Personagem::mostrarinventario() {
@@ -34,17 +35,21 @@ void Personagem::dormir() {
     setMana(getMaxMana());
 }
 
+// ==========================================
 // nivel do personagem
 bool Personagem::ganharXP(int quantidade){
     setXP(getXP() + quantidade);
 
     // verifica se atingiu o limite para subir de nível
-    int limite = nivel * 10; // exemplo: cada nível precisa de 100 * nivel XP
+    int limite = nivel * 10;
+    this->falta = limite - getXP();
+
     if (XP >= limite) { subirDeNivel(limite); return true; }
     return false;
 }
 
 void Personagem::subirDeNivel(int limite) {
+
 
     int excedente = getXP() - limite;
     setXP(excedente);
@@ -62,34 +67,32 @@ void Personagem::subirDeNivel(int limite) {
     setMana(getMaxMana());
 }
 
+// ==========================================
 void Personagem::magia() {}
 
 void Personagem::usar_magia() {}
 
+
+// ==========================================
 bool Personagem::fugir() {
     int chance = randint(1, 100);
     if (chance >= 75) return true;
     return false;
 }
 
+// escolha para usar o item
 bool Personagem::usarItem(TipoItem tipo) {
-    switch (tipo) {
-    case TipoItem::PocaoCura:
-        return usarPocao(20, inventario.getPocaoDeCura(), *this, TipoAtributo::HP);
-
-    case TipoItem::PocaoCuraForte:
-        return usarPocao(50, inventario.getPocaoDeCuraForte(), *this, TipoAtributo::HP);
-
-    case TipoItem::PocaoMana:
-        return usarPocao(20, inventario.getPocaoDeMana(), *this, TipoAtributo::Mana);
-
-    case TipoItem::PocaoManaForte:
-        return usarPocao(50, inventario.getPocaoDeManaForte(), *this, TipoAtributo::Mana);
+    switch (tipo)
+    {
+    case TipoItem::PocaoCura: return usarPocao(20, inventario.getPocaoDeCura(), *this, TipoAtributo::HP);
+    case TipoItem::PocaoCuraForte: return usarPocao(50, inventario.getPocaoDeCuraForte(), *this, TipoAtributo::HP);
+    case TipoItem::PocaoMana: return usarPocao(20, inventario.getPocaoDeMana(), *this, TipoAtributo::Mana);
+    case TipoItem::PocaoManaForte: return usarPocao(50, inventario.getPocaoDeManaForte(), *this, TipoAtributo::Mana);
     }
     return false;
 }
 
-
+// usa a poção expecidifica
 bool Personagem::usarPocao(int quantidade, int atual, Entidade& alvo, TipoAtributo tipo) {
 
     if (atual <= 0) return false;
@@ -131,6 +134,7 @@ bool Personagem::usarPocao(int quantidade, int atual, Entidade& alvo, TipoAtribu
 // getter
 int Personagem::getNivel() { return nivel; }
 int Personagem::getXP() { return XP; }
+int Personagem::getFalta() { return falta; }
 Itens &Personagem::getInventario() { return inventario; }
 
 // setter

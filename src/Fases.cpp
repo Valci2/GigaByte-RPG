@@ -2,87 +2,80 @@
 #include "Utilitarios.h"
 #include <iostream>
 
+struct FaseInfo {
+    std::string nome;
+    std::vector<std::string> partes;
+};
+
 // ====== Nome Das partes de cada fase ======
-// Partes da primeira fase
-std::vector<std::string> faseUm = {
-    {"Cripta da Memória"},
-    {"Labirinto dos Dados Perdidos"},
-    {"Santuário da RAM"}
-};
-
-// Partes da segunda fase
-std::vector<std::string> faseDois = {
-    {"Caminho dos Barramentos"},
-    {"Circuito Sombrio"},
-    {"Caverna da BIOS"}
-};
-
-// Partes da terceira fase
-std::vector<std::string> faseTres = {
-    {"Trono da Lógica Binária"},
-    {"Torre da ULA"},
-    {"Domínio dos Registradores"}
+const std::vector<FaseInfo> fases = {
+    {
+        "Memória",
+        {  // Partes da primeira fase
+            "Cripta da Memória",
+            "Labirinto dos Dados Perdidos",
+            "Santuário da RAM"
+        }
+    },
+    {
+        "Placa-mãe",
+        { // Partes da segunda fase
+            "Caminho dos Barramentos",
+            "Circuito Sombrio",
+            "Caverna da BIOS"
+        }
+    },
+    {
+        "CPU",
+        { // Partes da terceira fase
+            "Trono da Lógica Binária",
+            "Torre da ULA",
+            "Domínio dos Registradores"
+        }
+    }
 };
 
 // ========== Principal ==========
-void Fases::entrar(Personagem &jogador) {
-    int escolha = 0;
+void Fases::entrar(Personagem& jogador) {
+    while (true) {
 
-    do {
-        if (jogador.getHP() <= 0)
-        {
-            std::cout << "Voce nao tem vida para tentar encarar as fases, va se curar no inn." << std::endl;
+        if (jogador.getHP() <= 0) {
+            std::cout << "Voce nao tem vida para encarar as fases. Va se curar no inn.\n";
             return;
         }
-        titulo("Fases");
-        menuDeFases();
 
-        escolha = validarEscolha(1, 4);
-        int parte = 0;
-        switch (escolha) {
-            case 1:
-                titulo("Fase 1");
-                menuDasPartes(faseUm);
-                parte = validarEscolha(1, faseUm.size() + 1);
-            if (parte < faseUm.size() + 1)
-            {
-                combate->comecar(jogador, escolha, parte);
-            }
-            break;
-            case 2:
-                titulo("Fase 2");
-                menuDasPartes(faseDois);
-                parte = validarEscolha(1, faseDois.size() + 1);
-            if (parte < faseDois.size() + 1)
-            {
-                combate->comecar(jogador, escolha, parte);
-            }
-            break;
-            case 3:
-                titulo("Fase 3");
-                menuDasPartes(faseTres);
-                parte = validarEscolha(1, faseTres.size() + 1);
-            if (parte < faseTres.size() + 1)
-            {
-                combate->comecar(jogador, escolha, parte);
-            }
-            break;
-        }
-    } while (escolha != 4);
+        titulo("Fases");
+        menuDasFases();
+
+        int escolhaFase = validarEscolha(1, fases.size() + 1);
+
+        if (escolhaFase == fases.size() + 1)
+            return;
+
+        int faseIndex = escolhaFase - 1;
+        const FaseInfo& fase = fases[faseIndex];
+
+        titulo("Fase: " + fase.nome);
+        menuDasPartes(fase.partes);
+
+        int escolhaParte = validarEscolha(1, fase.partes.size() + 1);
+
+        if (escolhaParte == fase.partes.size() + 1)
+            continue;
+
+        linha();
+        combate->comecar(jogador, faseIndex + 1, escolhaParte);
+    }
 }
 
 // ========= menu das fases =========
-void Fases::menuDeFases() {
-    std::cout << "[1] - Memoria" << std::endl;
-    std::cout << "[2] - Placa mae" << std::endl;
-    std::cout << "[3] - CPU" << std::endl;
-    std::cout << "[4] - Voltar" << std::endl;
+void Fases::menuDasFases() {
+    for (int i = 0; i < fases.size(); i++) { std::cout << "[" << i + 1 << "] - " << fases[i].nome << std::endl; }
+    std::cout << "[" << fases.size() + 1 << "] - Voltar" << std::endl;
 }
 
 // ========= menu das partes =========
-void Fases::menuDasPartes(const std::vector<std::string> &fases) {
-    for (int i = 0; i < fases.size(); i++) {
-        std::cout << "[" << i + 1 << "] - " << fases[i] << std::endl;
-    }
-    std::cout << "[" << fases.size() + 1 << "]" << " - voltar" << std::endl;
+void Fases::menuDasPartes(const std::vector<std::string>& partes) {
+    for (int i = 0; i < partes.size(); i++) { std::cout << "[" << i + 1 << "] - " << partes[i] << std::endl; }
+    std::cout << "[" << partes.size() + 1 << "] - Voltar" << std::endl;
 }
