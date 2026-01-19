@@ -16,7 +16,7 @@ Entidade::Entidade(const std::string& nome, int maxHP, int maxMana, int forca, i
 
 // combate
 int Entidade::atacar(Entidade& alvo) {
-    int dano = static_cast<int> (this->forca * 1.2 + this->inteligencia * 0.1 - alvo.getDefesa());
+    int dano = static_cast<int> (this->forca * 1.2 + this->inteligencia * 0.3 - alvo.getDefesa());
     dano = alvo.tomarDano(dano);
     return dano;
 }

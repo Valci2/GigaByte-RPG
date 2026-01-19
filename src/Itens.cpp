@@ -18,8 +18,6 @@ int Itens::getPocaoDeCura() { return pocaoDeCura; }
 int Itens::getPocaoDeCuraForte() { return pocaoDeCuraForte; }
 int Itens::getPocaoDeMana() { return pocaoDeMana; }
 int Itens::getPocaoDeManaForte() { return pocaoDeManaForte; }
-const std::string &Itens::getArma() { return arma; }
-const std::string &Itens::getArmadura() { return armadura; }
 
 // setter
 void Itens::setCapiba(int Capiba) { this->capiba = Capiba; }
@@ -28,5 +26,14 @@ void Itens::setPocaoDeCuraForte(int pocaoDeCuraForte) { this->pocaoDeCuraForte =
 void Itens::setPocaoDeMana(int pocaoDeMana) { this->pocaoDeMana = pocaoDeMana; }
 void Itens::setPocaoDeManaForte(int pocaoDeManaForte) { this->pocaoDeManaForte = pocaoDeManaForte; }
 
-void Itens::setArma(const std::string &arma) { this->arma = arma; }
-void Itens::setArmadura(const std::string &armadura) { this->armadura = armadura; }
+const std::string &Itens::getArma() { return this->armaEquipada; }
+const std::string &Itens::getArmadura() { return this->armaduraEquipada; }
+
+void Itens::setArma(const std::string &arma) { this->armaEquipada = arma; }
+void Itens::setArmadura(const std::string &armadura) { this->armaduraEquipada = armadura; }
+
+const std::vector<Item> &Itens::getArmas() { return this->armas; }
+const std::vector<Item> &Itens::getArmaduras() { return this->armaduras; }
+
+void Itens::setArmas(const Item &arma) { this->armas.push_back(arma); }
+void Itens::setArmaduras(const Item &armadura) { this->armaduras.push_back(armadura); }

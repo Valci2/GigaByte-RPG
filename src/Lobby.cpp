@@ -11,6 +11,7 @@ enum acoes
     Inn,
     Status,
     Inventario,
+    Trocar,
     Sair = 9
 };
 
@@ -40,6 +41,7 @@ void Lobby::mostrarMenu() const {
     std::cout << "[3] - INN" << std::endl;
     std::cout << "[4] - Status" << std::endl;
     std::cout << "[5] - Inventario" << std::endl;
+    std::cout << "[6] - Trocar item" << std::endl;
     std::cout << "[9] - Sair do jogo" << std::endl;
 }
 
@@ -65,6 +67,9 @@ void Lobby::processarEscolha(int escolha) {
         case Inventario:
             jogador.mostrarinventario();
             delay(2);
+            break;
+        case Trocar:
+            jogador.trocarItem();
             break;
         case Sair:
             std::exit(1);

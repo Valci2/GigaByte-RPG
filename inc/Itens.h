@@ -1,4 +1,7 @@
 #pragma once
+#include "Tipos.h"
+
+#include <vector>
 #include <string>
 
 class Itens {
@@ -8,8 +11,10 @@ private:
     int pocaoDeCuraForte = 0;
     int pocaoDeMana = 0;
     int pocaoDeManaForte = 0;
-    std::string arma = "sem";
-    std::string armadura = "sem";
+    std::string armaEquipada;
+    std::string armaduraEquipada;
+    std::vector<Item> armas;
+    std::vector<Item> armaduras;
 
 public:
     // construtor
@@ -24,8 +29,7 @@ public:
     void setPocaoDeCuraForte(int pocaoDeCuraForte);
     void setPocaoDeMana(int pocaoDeMana);
     void setPocaoDeManaForte(int pocaoDeManaForte);
-    void setArma(const std::string &arma);
-    void setArmadura(const std::string &armadura);
+
 
     // getter
     int getCapiba();
@@ -33,6 +37,16 @@ public:
     int getPocaoDeCuraForte();
     int getPocaoDeMana();
     int getPocaoDeManaForte();
+
     const std::string &getArma();
     const std::string &getArmadura();
+
+    void setArma(const std::string &arma);
+    void setArmadura(const std::string &armadura);
+
+    const std::vector<Item> &getArmas();
+    const std::vector<Item> &getArmaduras();
+
+    void setArmas(const Item &arma);
+    void setArmaduras(const Item &armadura);
 };

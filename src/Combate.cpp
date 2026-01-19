@@ -117,7 +117,7 @@ bool Combate::turnoDoJogador(Personagem &jogador, Monstro &monstro)
                     int escolhaItem = validarEscolha(1, 5);
 
                     if (escolhaItem == 5) break;
-                    bool sucesso = jogador.usarItem(static_cast<TipoItem>(escolhaItem - 1));
+                    bool sucesso = jogador.usarItem(static_cast<TipoPocao>(escolhaItem - 1));
 
                     if (!sucesso) {
                         std::cout << "voce nao conseguiu usar a pocao" << std::endl;

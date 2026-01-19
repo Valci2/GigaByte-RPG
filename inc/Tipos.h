@@ -1,11 +1,25 @@
 #ifndef TIPOS_H
 #define TIPOS_H
 
-enum class TipoItem {
+#include <string>
+
+enum class TipoPocao {
     PocaoCura,
     PocaoCuraForte,
     PocaoMana,
     PocaoManaForte
+};
+
+enum class TipoItem {
+    Arma,
+    Armadura,
+    Pocao
+};
+
+struct Item
+{
+    std::string nome;
+    int poder;
 };
 
 #endif

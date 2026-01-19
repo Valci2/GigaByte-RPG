@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 # Adiciona o diretório include/ como caminho para os arquivos de cabeçalho (.hpp)
 include_directories(inc
-    inc/Monstros
+        inc/monstros
 )
 
 # Agrupa todos os arquivos automaticamente
@@ -22,17 +22,12 @@ file(GLOB_RECURSE SOURCES
         src/Lobby.cpp
         src/Personagem.cpp
         src/Itens.cpp
-        src/Monstros/Monstro.cpp
         src/Combate.cpp
+        src/Entidade.cpp
+        src/monstros/Monstro.cpp
+        src/monstros/FabricaDeMonstros.cpp
         src/main.cpp
 )
 
 # Cria o executável do seu programa, chamado RPG
-add_executable(RPG ${SOURCES}
-        inc/Tipos.h
-        src/Monstros/Boss.cpp
-        inc/Monstros/Boss.h
-        src/Entidade.cpp
-        inc/Entidade.h
-        src/Monstros/FabricaDeMonstros.cpp
-        inc/Monstros/FabricaDeMonstros.h)
+add_executable(RPG ${SOURCES})

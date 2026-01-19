@@ -25,11 +25,11 @@ std::vector<TemplateMonstro> FabricaDeMonstros::monstrosFaseDois = {
 
 // listas de monstros da terceira fase
 std::vector<TemplateMonstro> FabricaDeMonstros::monstrosFaseTres = {
-    { "Thread Caótica", 30, 12, 13, 18, 15, 100, 150, 0, 0 },
-    { "Segmentation Fault", 32, 12, 14, 18, 16, 100, 160, 0, 0 },
-    { "Overclock Insano", 36, 13, 15, 20, 17, 120, 180, 0, 0 },
-    { "Pipeline Quebrado", 40, 11, 17, 25, 16, 160, 200, 0, 0 },
-    { "Deadlock", 60, 50, 20, 40, 20, 400, 600, 400, 600 }
+    { "Thread Caótica", 30, 12, 13, 18, 15, 100, 150, 100, 150 },
+    { "Segmentation Fault", 32, 12, 14, 18, 16, 100, 160, 100, 160 },
+    { "Overclock Insano", 36, 13, 15, 20, 17, 120, 180, 120, 180 },
+    { "Pipeline Quebrado", 40, 11, 17, 25, 16, 160, 200, 160, 200 },
+    { "Deadlock", 80, 50, 25, 45, 30, 400, 600, 400, 600 }
 };
 
 // ========================================================================

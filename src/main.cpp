@@ -7,11 +7,14 @@
 // colocar um sistema pra trocar a armadura e a arma se o jogador quiser
 // talvez ajustar melhor os atributos
 
+// colocar na pasta templats os templets das estruturas do vector
+// colocar os enuns
+// colocar as structs
+
 // fazer as historias
 // talvez fazer o lobby gerenciar as historias
 
 // fazer as magias e o sistema de magias 
-
 
 // adicinar comentarios?
 
